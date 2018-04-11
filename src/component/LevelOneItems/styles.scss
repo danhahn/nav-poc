@@ -1,0 +1,37 @@
+@import "../PrimaryNav/styles.scss";
+
+.SecondaryNav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: tan;
+  transform: translateY(-100%);
+  transition: all 0.3s;
+  z-index: 900;
+
+  &.levelOneIsOpen,
+  &.levelOneIsOpening {
+    transform: translateY(0);
+  }
+
+  &__list {
+    transition: all 500ms linear;
+    transition-delay: 1s;
+    opacity: 0;
+    padding: 0;
+    list-style: none;
+    margin: 0 auto;
+    max-width: 1100px;
+    display: flex;
+    &--active {
+      opacity: 1;
+    }
+  }
+  &__link {
+    padding: 1em 3em;
+    display: block;
+    text-decoration: none;
+    color: black;
+    @include linkBorder();
+  }
+}
