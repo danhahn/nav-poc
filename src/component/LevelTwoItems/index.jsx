@@ -1,8 +1,7 @@
 import React from "react";
+import ChooseLayout from "../layouts/ChooseLayout";
 import classNames from "classnames";
 import "./styles.css";
-import Trends from "../layouts/Trends";
-import ChooseLayout from "../layouts/ChooseLayout";
 
 const LevelTwoItems = ({
   levelTwoIsOpening,

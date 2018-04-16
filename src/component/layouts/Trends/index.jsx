@@ -1,6 +1,6 @@
 import React from "react";
 import TrendsLinks from "../../TrendsLinks";
-import LinkWithImage from "../../LinkWithImage";
+// import LinkWithImage from "../../LinkWithImage";
 
 const Trends = ({ levelTwoItems }) => {
   return (

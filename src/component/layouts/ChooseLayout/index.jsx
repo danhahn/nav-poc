@@ -1,5 +1,4 @@
 import React from "react";
-import Tends from "../Trends";
 import Default from "../default";
 import Trends from "../Trends";
 
