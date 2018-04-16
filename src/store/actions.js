@@ -3,7 +3,13 @@ export const TYPES = {
   UPDATE_LEVEL_ONE_ITEMS: 'UPDATE_LEVEL_ONE_ITEMS',
   UPDATE_LEVEL_TWO_ITEMS: 'UPDATE_LEVEL_TWO_ITEMS',
   UPDATE_LEVEL_TWO_TEMPLATE: 'UPDATE_LEVEL_TWO_TEMPLATE',
+  SET_NAV_DATA: 'SET_NAV_DATA'
 };
+
+export const loadNavData = data => ({
+  type: TYPES.SET_NAV_DATA,
+  data
+});
 
 export const navSuccess = items => ({
   type: TYPES.GET_NAVIGATION_SUCCESS,

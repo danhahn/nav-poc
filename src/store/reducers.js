@@ -10,6 +10,15 @@ const rawNavData = (state = [], action) => {
   }
 };
 
+const transformedNavData = (state = [], action) => {
+  switch (action.type) {
+    case TYPES.SET_NAV_DATA:
+      return action.data;
+    default:
+      return state;
+  }
+}
+
 const levelOneData = (state = [], action) => {
   switch (action.type) {
     case TYPES.UPDATE_LEVEL_ONE_ITEMS:
@@ -39,6 +48,7 @@ const levelTwoTemplate = (state = null, action) => {
 
 export default combineReducers({
   rawNavData,
+  transformedNavData,
   levelOneData,
   levelTwoData,
   levelTwoTemplate

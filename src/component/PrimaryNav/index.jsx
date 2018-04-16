@@ -47,7 +47,12 @@ export default class PrimaryNav extends Component {
   }
 
   render() {
-    const { items, levelOneItems, levelTwoItems } = this.props;
+    const {
+      items,
+      levelOneItems,
+      levelTwoItems,
+      levelTwoTemplate
+    } = this.props;
     const {
       levelOneIsOpening,
       levelOneIsOpen,
@@ -76,6 +81,7 @@ export default class PrimaryNav extends Component {
           levelTwoIsOpening={levelTwoIsOpening}
           levelTwoIsOpen={levelTwoIsOpen}
           levelTwoItems={levelTwoItems}
+          levelTwoTemplate={levelTwoTemplate}
         />
       </React.Fragment>
     );
@@ -131,7 +137,7 @@ PrimaryNav.defaultProps = {
             { title: "TRAVEL DIARIES", url: null, img: null, id: "123-2-3" },
             { title: "MICHAEL'S TAKE", url: null, img: null, id: "123-3-4" }
           ],
-          template: null,
+          template: "two",
           moreInfo: null
         },
         {

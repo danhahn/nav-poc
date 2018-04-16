@@ -20,7 +20,7 @@ const LevelZeroItems = ({ items, handlePrimaryMouseEnter, primaryActive }) => {
               }
             >
               <a href="" className={primaryNavStyle}>
-                {primary.label}
+                {primary.title}
               </a>
             </li>
           );

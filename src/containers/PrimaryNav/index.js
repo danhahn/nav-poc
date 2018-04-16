@@ -8,7 +8,7 @@ import {
 } from "../../store/actions";
 
 const mapStateToProps = state => ({
-  items: state.navigation.rawNavData,
+  items: state.navigation.transformedNavData,
   levelOneItems: state.navigation.levelOneData,
   levelTwoItems: state.navigation.levelTwoData,
   levelTwoTemplate: state.navigation.levelTwoTemplate

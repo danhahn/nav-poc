@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import PrimaryNav from './containers/PrimaryNav';
 import './App.css';
+import data from './data/raw.json';
+import { transformData } from './utils/transform-blob';
+import { connect } from "react-redux";
+import {
+  loadNavData
+} from "./store/actions";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.loadDataToState(transformData(data));
+  }
   render() {
     return <div className="App">
         <header className="App-header">
@@ -77,4 +86,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  items: state.navigation.rawNavData,
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadDataToState: data => dispatch(loadNavData(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
