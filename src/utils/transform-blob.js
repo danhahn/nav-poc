@@ -14,12 +14,13 @@ const formatUrl = (urlData, local = "") => {
 }
 
 const transformTrends = (trends, id) => {
+  const transformedL3s = trends.map(l3 => transformL3Data(l3));
   return {
     id: `${id}-TRENDS`,
     title: "TENDS",
     url: null,
     template: "trends",
-    l3: trends
+    l3: transformedL3s
   }
 }
 

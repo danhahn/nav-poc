@@ -1,6 +1,6 @@
 import React from "react";
 import Tends from "../Trends";
-import LayoutTwo from "../LayoutTwo";
+import Default from "../default";
 import Trends from "../Trends";
 
 const ChooseLayout = ({ template, levelTwoItems }) => {
@@ -9,11 +9,8 @@ const ChooseLayout = ({ template, levelTwoItems }) => {
     case "trends":
       Component = <Trends levelTwoItems={levelTwoItems} />;
       break;
-    case "two":
-      Component = <LayoutTwo />;
-      break;
     default:
-      Component = null;
+      Component = <Default levelTwoItems={levelTwoItems} />;
   }
   return Component;
 };
