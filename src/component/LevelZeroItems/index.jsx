@@ -2,7 +2,12 @@ import React from "react";
 import classNames from "classnames";
 import "./styles.css";
 
-const LevelZeroItems = ({ items, handlePrimaryMouseEnter, primaryActive }) => {
+const LevelZeroItems = ({
+  items,
+  handlePrimaryMouseEnter,
+  handlePrimaryMouseExit,
+  primaryActive
+}) => {
   return (
     <nav className="PrimaryNav">
       <ul className="PrimaryNav__list">
@@ -18,6 +23,7 @@ const LevelZeroItems = ({ items, handlePrimaryMouseEnter, primaryActive }) => {
               onMouseEnter={() =>
                 handlePrimaryMouseEnter(primary.id, primary.l2)
               }
+              onMouseLeave={handlePrimaryMouseExit}
             >
               <a href="" className={primaryNavStyle}>
                 {primary.title}

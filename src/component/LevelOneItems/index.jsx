@@ -22,6 +22,7 @@ export default class LevelOneItems extends Component {
       levelOneIsClosed,
       levelOneItems,
       handleSecondaryMouseEnter,
+      handleSecondaryMouseExit,
       secondaryActive
     } = this.props;
     const levelOneStyles = classNames("SecondaryNav", {
@@ -52,6 +53,7 @@ export default class LevelOneItems extends Component {
                         secondary.template
                       )
                     }
+                    onMouseLeave={handleSecondaryMouseExit}
                   >
                     <a href="" className={linkStyles}>
                       {secondary.title}

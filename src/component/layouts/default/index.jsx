@@ -19,8 +19,8 @@ const NavDefaultLayout = ({ levelTwoItems }) => {
 
   return (
     <ul className="contentNav__list">
-      {splitNav.map(part => (
-        <li className="contentNav__item">
+      {splitNav.map((part, i) => (
+        <li className="contentNav__item" key={i}>
           <ul className="NavDefaultLayout">{part}</ul>
         </li>
       ))}

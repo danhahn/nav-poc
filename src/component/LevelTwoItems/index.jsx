@@ -7,17 +7,23 @@ const LevelTwoItems = ({
   levelTwoIsOpening,
   levelTwoIsOpen,
   levelTwoItems,
-  levelTwoTemplate
+  levelTwoTemplate,
+  handleThirdMouseEnter,
+  handleThirdMouseExit
 }) => {
   const levelTwoStyles = classNames("contentNav", {
     levelTwoIsOpening,
     levelTwoIsOpen
   });
-  return (
-    <nav className={levelTwoStyles}>
+  return levelTwoIsOpening ? (
+    <nav
+      className={levelTwoStyles}
+      onMouseEnter={handleThirdMouseEnter}
+      onMouseLeave={handleThirdMouseExit}
+    >
       <ChooseLayout levelTwoItems={levelTwoItems} template={levelTwoTemplate} />
     </nav>
-  );
+  ) : null;
 };
 
 export default LevelTwoItems;

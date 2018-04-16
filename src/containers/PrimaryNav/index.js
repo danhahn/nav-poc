@@ -4,7 +4,8 @@ import {
   navSuccess,
   updateLevelOneItems,
   updateLevelTwoItems,
-  updateLevelTwoTemplate
+  updateLevelTwoTemplate,
+  resetNav
 } from "../../store/actions";
 
 const mapStateToProps = state => ({
@@ -18,6 +19,9 @@ const mapDispatchToProps = dispatch => ({
   navSuccess: data => dispatch(navSuccess(data)),
   updateLevelOneData: levelOneData => {
     dispatch(updateLevelOneItems(levelOneData));
+  },
+  updateLevelOneReset: () => {
+    dispatch(resetNav())
   },
   updateLevelTwoData: (levelTwoData, template) => {
     dispatch(updateLevelTwoItems(levelTwoData));
