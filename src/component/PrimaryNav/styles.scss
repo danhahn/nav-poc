@@ -1,21 +1,15 @@
 @mixin linkBorder($isActive: "false") {
   position: relative;
-  overflow: hidden;
-  &::after {
-    content: "";
-    position: absolute;
-    background-color: #000000;
-    height: 3px;
-    bottom: 0;
-    left: calc(3em - 5px);
-    right: calc(3em - 5px);
-    transform: translateY(100%);
-    transition: all 100ms linear;
-  }
   &.active,
   &:hover {
     &::after {
-      transform: translateY(0);
+      content: "";
+      position: absolute;
+      background-color: #000000;
+      height: 2px;
+      left: calc(3em - 5px);
+      right: calc(3em - 5px);
+      bottom: -3px;
     }
   }
 }

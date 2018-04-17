@@ -8,7 +8,7 @@
   margin-top: 50px;
   opacity: 0;
   &.levelTwoIsOpen {
-    background-color: fuchsia;
+    background-color: rgba(fuchsia, 0.9);
   }
   &.levelTwoIsOpen,
   &.isActive {

@@ -24,6 +24,8 @@ export default class PrimaryNav extends Component {
     this.handleThirdMouseEnter = this.handleThirdMouseEnter.bind(this);
     this.handleThirdMouseExit = this.handleThirdMouseExit.bind(this);
     this.resetNavData = this.resetNavData.bind(this);
+    this.constructTimeoutEnter = this.constructTimeoutEnter.bind(this);
+    this.constructTimeoutExit = this.constructTimeoutExit.bind(this);
     this.timeout = null;
   }
 
@@ -38,26 +40,36 @@ export default class PrimaryNav extends Component {
     });
   }
 
-  handlePrimaryMouseEnter(id, items) {
-    clearTimeout(this.timeout);
-    const { updateLevelOneData } = this.props;
-    this.setState({ levelOneIsOpening: true, primaryActive: id });
+  constructTimeoutEnter(newState) {
     setTimeout(() => {
-      this.setState({
-        levelOneIsOpening: false,
-        levelOneIsOpen: true
-      });
-    }, 800);
-    // updateLevelOneData(items);
-    updateLevelOneData(items);
+      this.setState(newState);
+    }, this.props.enterDelay);
   }
 
-  handlePrimaryMouseExit() {
+  constructTimeoutExit() {
     const { updateLevelOneReset } = this.props;
     this.timeout = setTimeout(() => {
       updateLevelOneReset();
       this.resetNavData();
-    }, 500);
+    }, this.props.exitDelay);
+  }
+
+  handlePrimaryMouseEnter(id, items) {
+    clearTimeout(this.timeout);
+    const { updateLevelOneData } = this.props;
+    this.setState({
+      levelOneIsOpening: true,
+      primaryActive: id
+    });
+    this.constructTimeoutEnter({
+      levelOneIsOpening: false,
+      levelOneIsOpen: true
+    });
+    updateLevelOneData(items);
+  }
+
+  handlePrimaryMouseExit() {
+    this.constructTimeoutExit();
   }
 
   handleSecondaryMouseEnter(id, items, template) {
@@ -67,21 +79,15 @@ export default class PrimaryNav extends Component {
       levelTwoIsOpening: true,
       secondaryActive: id
     });
-    setTimeout(() => {
-      this.setState({
-        levelTwoIsOpening: false,
-        levelTwoIsOpen: true
-      });
-    }, 800);
+    this.constructTimeoutEnter({
+      levelTwoIsOpening: false,
+      levelTwoIsOpen: true
+    });
     updateLevelTwoData(items, template);
   }
 
   handleSecondaryMouseExit() {
-    const { updateLevelOneReset } = this.props;
-    this.timeout = setTimeout(() => {
-      updateLevelOneReset();
-      this.resetNavData();
-    }, 500);
+    this.constructTimeoutExit();
   }
 
   handleThirdMouseEnter() {
@@ -89,11 +95,7 @@ export default class PrimaryNav extends Component {
   }
 
   handleThirdMouseExit() {
-    const { updateLevelOneReset } = this.props;
-    this.timeout = setTimeout(() => {
-      updateLevelOneReset();
-      this.resetNavData();
-    }, 500);
+    this.constructTimeoutExit();
   }
 
   render() {
@@ -101,7 +103,9 @@ export default class PrimaryNav extends Component {
       items,
       levelOneItems,
       levelTwoItems,
-      levelTwoTemplate
+      levelTwoTemplate,
+      enterDelay,
+      exitDelay
     } = this.props;
     const {
       levelOneIsOpening,
@@ -111,15 +115,21 @@ export default class PrimaryNav extends Component {
       primaryActive,
       secondaryActive
     } = this.state;
+    const timing = {
+      enterDelay,
+      exitDelay
+    };
     return (
       <React.Fragment>
         <LevelZeroItems
+          {...timing}
           items={items}
           handlePrimaryMouseEnter={this.handlePrimaryMouseEnter}
           handlePrimaryMouseExit={this.handlePrimaryMouseExit}
           primaryActive={primaryActive}
         />
         <LevelOneItems
+          {...timing}
           levelOneIsOpening={levelOneIsOpening}
           levelOneIsOpen={levelOneIsOpen}
           handleSecondaryMouseEnter={this.handleSecondaryMouseEnter}
@@ -129,6 +139,7 @@ export default class PrimaryNav extends Component {
         />
         {levelTwoItems.length ? (
           <LevelTwoItems
+            {...timing}
             levelTwoIsOpening={levelTwoIsOpening}
             levelTwoIsOpen={levelTwoIsOpen}
             levelTwoItems={levelTwoItems}
@@ -141,3 +152,8 @@ export default class PrimaryNav extends Component {
     );
   }
 }
+
+PrimaryNav.defaultProps = {
+  enterDelay: 800,
+  exitDelay: 500
+};

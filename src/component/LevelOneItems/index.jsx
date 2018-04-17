@@ -27,7 +27,8 @@ export default class LevelOneItems extends Component {
       levelOneItems,
       handleSecondaryMouseEnter,
       handleSecondaryMouseExit,
-      secondaryActive
+      secondaryActive,
+      enterDelay
     } = this.props;
     const levelOneStyles = classNames("SecondaryNav", {
       levelOneIsOpening,
@@ -40,7 +41,10 @@ export default class LevelOneItems extends Component {
       levelOneIsOpen
     });
     return (
-      <nav className={levelOneStyles}>
+      <nav
+        className={levelOneStyles}
+        style={{ transitionDelay: `${enterDelay / 2}ms` }}
+      >
         <ul className={listStyles}>
           {levelOneItems
             ? levelOneItems.map(secondary => {

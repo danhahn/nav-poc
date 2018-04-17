@@ -19,7 +19,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <PrimaryNav />
+        <PrimaryNav enterDelay={2000} exitDelay={10000000000}/>
         <article className="App-intro">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat

@@ -35,6 +35,8 @@
     display: block;
     text-decoration: none;
     color: black;
-    @include linkBorder();
+    &.active {
+      font-weight: bold;
+    }
   }
 }

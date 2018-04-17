@@ -26,7 +26,8 @@ class LevelTwoItems extends Component {
       levelTwoItems,
       levelTwoTemplate,
       handleThirdMouseEnter,
-      handleThirdMouseExit
+      handleThirdMouseExit,
+      enterDelay
     } = this.props;
     const { isActive } = this.state;
     const levelTwoStyles = classNames("contentNav", {
@@ -39,6 +40,7 @@ class LevelTwoItems extends Component {
         className={levelTwoStyles}
         onMouseEnter={handleThirdMouseEnter}
         onMouseLeave={handleThirdMouseExit}
+        style={{ transitionDelay: `${enterDelay / 2}ms` }}
       >
         <ChooseLayout
           levelTwoItems={levelTwoItems}
