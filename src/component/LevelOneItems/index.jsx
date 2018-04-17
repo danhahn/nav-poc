@@ -8,11 +8,15 @@ export default class LevelOneItems extends Component {
     this.state = {
       isActive: false
     };
+    this.timeout = null;
   }
   componentDidMount() {
-    setTimeout(() => {
+    this.timeout = setTimeout(() => {
       this.setState({ isActive: !this.state.isActive });
     }, 100);
+  }
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
   }
   render() {
     const {
@@ -32,7 +36,8 @@ export default class LevelOneItems extends Component {
       levelOneIsClosed
     });
     const listStyles = classNames("SecondaryNav__list", {
-      "SecondaryNav__list--active": this.state.isActive
+      "SecondaryNav__list--active": this.state.isActive,
+      levelOneIsOpen
     });
     return (
       <nav className={levelOneStyles}>

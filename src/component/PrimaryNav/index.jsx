@@ -23,28 +23,40 @@ export default class PrimaryNav extends Component {
     this.handleSecondaryMouseExit = this.handleSecondaryMouseExit.bind(this);
     this.handleThirdMouseEnter = this.handleThirdMouseEnter.bind(this);
     this.handleThirdMouseExit = this.handleThirdMouseExit.bind(this);
+    this.resetNavData = this.resetNavData.bind(this);
     this.timeout = null;
+  }
+
+  resetNavData() {
+    this.setState({
+      primaryActive: null,
+      secondaryActive: null,
+      levelOneIsOpen: false,
+      levelOneIsOpening: false,
+      levelTwoIsOpen: false,
+      levelTwoIsOpening: false
+    });
   }
 
   handlePrimaryMouseEnter(id, items) {
     clearTimeout(this.timeout);
     const { updateLevelOneData } = this.props;
-    this.setState({ levelOneIsOpening: true });
+    this.setState({ levelOneIsOpening: true, primaryActive: id });
     setTimeout(() => {
       this.setState({
         levelOneIsOpening: false,
-        levelOneIsOpen: true,
-        primaryActive: id
+        levelOneIsOpen: true
       });
-    }, 1000);
+    }, 800);
+    // updateLevelOneData(items);
     updateLevelOneData(items);
   }
 
   handlePrimaryMouseExit() {
     const { updateLevelOneReset } = this.props;
     this.timeout = setTimeout(() => {
-      updateLevelOneReset;
-      this.setState({ levelOneIsOpen: false, primaryActive: null });
+      updateLevelOneReset();
+      this.resetNavData();
     }, 500);
   }
 
@@ -55,6 +67,12 @@ export default class PrimaryNav extends Component {
       levelTwoIsOpening: true,
       secondaryActive: id
     });
+    setTimeout(() => {
+      this.setState({
+        levelTwoIsOpening: false,
+        levelTwoIsOpen: true
+      });
+    }, 800);
     updateLevelTwoData(items, template);
   }
 
@@ -62,12 +80,7 @@ export default class PrimaryNav extends Component {
     const { updateLevelOneReset } = this.props;
     this.timeout = setTimeout(() => {
       updateLevelOneReset();
-      this.setState({
-        levelOneIsOpen: false,
-        primaryActive: null,
-        levelTwoIsOpening: false,
-        secondaryActive: null
-      });
+      this.resetNavData();
     }, 500);
   }
 
@@ -79,12 +92,7 @@ export default class PrimaryNav extends Component {
     const { updateLevelOneReset } = this.props;
     this.timeout = setTimeout(() => {
       updateLevelOneReset();
-      this.setState({
-        levelOneIsOpen: false,
-        primaryActive: null,
-        levelTwoIsOpening: false,
-        secondaryActive: null
-      });
+      this.resetNavData();
     }, 500);
   }
 
@@ -119,14 +127,16 @@ export default class PrimaryNav extends Component {
           levelOneItems={levelOneItems}
           secondaryActive={secondaryActive}
         />
-        <LevelTwoItems
-          levelTwoIsOpening={levelTwoIsOpening}
-          levelTwoIsOpen={levelTwoIsOpen}
-          levelTwoItems={levelTwoItems}
-          levelTwoTemplate={levelTwoTemplate}
-          handleThirdMouseEnter={this.handleThirdMouseEnter}
-          handleThirdMouseExit={this.handleThirdMouseExit}
-        />
+        {levelTwoItems.length ? (
+          <LevelTwoItems
+            levelTwoIsOpening={levelTwoIsOpening}
+            levelTwoIsOpen={levelTwoIsOpen}
+            levelTwoItems={levelTwoItems}
+            levelTwoTemplate={levelTwoTemplate}
+            handleThirdMouseEnter={this.handleThirdMouseEnter}
+            handleThirdMouseExit={this.handleThirdMouseExit}
+          />
+        ) : null}
       </React.Fragment>
     );
   }
