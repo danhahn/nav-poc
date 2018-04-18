@@ -33,3 +33,9 @@ export default class LinkWithImage extends Component {
     );
   }
 }
+
+LinkWithImage.defaultProps = {
+  src: "http://via.placeholder.com/150",
+  href: "http://www.michaelkors.com",
+  title: "place holder text"
+};

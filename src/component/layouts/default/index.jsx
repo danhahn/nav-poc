@@ -1,5 +1,6 @@
 import React from "react";
 import chunk from "lodash/chunk";
+import LinkWithImage from "../../LinkWithImage";
 import "./styles.css";
 
 const NavItem = ({ title, url }) => (
@@ -19,11 +20,26 @@ const NavDefaultLayout = ({ levelTwoItems }) => {
 
   return (
     <ul className="contentNav__list">
-      {splitNav.map((part, i) => (
-        <li className="contentNav__item" key={i}>
-          <ul className="NavDefaultLayout">{part}</ul>
-        </li>
-      ))}
+      {splitNav.length === 1 ? (
+        <React.Fragment>
+          <li className="contentNav__item isEmpty" />
+          <li className="contentNav__item">
+            <ul className="NavDefaultLayout">{splitNav[0]}</ul>
+          </li>
+        </React.Fragment>
+      ) : (
+        splitNav.map((part, i) => (
+          <li className="contentNav__item" key={i}>
+            <ul className="NavDefaultLayout">{part}</ul>
+          </li>
+        ))
+      )}
+      <li className="contentNav__item">
+        <LinkWithImage />
+      </li>
+      <li className="contentNav__item">
+        <LinkWithImage />
+      </li>
     </ul>
   );
 };

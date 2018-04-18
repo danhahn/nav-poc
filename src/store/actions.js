@@ -2,7 +2,9 @@ export const TYPES = {
   GET_NAVIGATION_SUCCESS: 'GET_NAVIGATION_SUCCESS',
   UPDATE_LEVEL_ONE_ITEMS: 'UPDATE_LEVEL_ONE_ITEMS',
   UPDATE_LEVEL_TWO_ITEMS: 'UPDATE_LEVEL_TWO_ITEMS',
+  RESET_LEVEL_TWO_ITEMS: 'RESET_LEVEL_TWO_ITEMS',
   UPDATE_LEVEL_TWO_TEMPLATE: 'UPDATE_LEVEL_TWO_TEMPLATE',
+  RESET_LEVEL_TWO_TEMPLATE: 'RESET_LEVEL_TWO_TEMPLATE',
   SET_NAV_DATA: 'SET_NAV_DATA',
   RESET_NAV: 'RESET_NAV'
 };
@@ -31,7 +33,15 @@ export const updateLevelTwoItems = items => ({
   items
 });
 
+export const resetLevelTwoItems = () => ({
+  type: TYPES.RESET_LEVEL_TWO_ITEMS
+});
+
 export const updateLevelTwoTemplate = template => ({
   type: TYPES.UPDATE_LEVEL_TWO_TEMPLATE,
   template
+});
+
+export const resetLevelTwoTemplate = () => ({
+  type: TYPES.RESET_LEVEL_TWO_TEMPLATE
 });

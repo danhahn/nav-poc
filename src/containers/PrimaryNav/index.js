@@ -5,6 +5,8 @@ import {
   updateLevelOneItems,
   updateLevelTwoItems,
   updateLevelTwoTemplate,
+  resetLevelTwoItems,
+  resetLevelTwoTemplate,
   resetNav
 } from "../../store/actions";
 
@@ -26,6 +28,10 @@ const mapDispatchToProps = dispatch => ({
   updateLevelTwoData: (levelTwoData, template) => {
     dispatch(updateLevelTwoItems(levelTwoData));
     dispatch(updateLevelTwoTemplate(template));
+  },
+  resetLevelTwoData: () => {
+    dispatch(resetLevelTwoItems());
+    dispatch(resetLevelTwoTemplate());
   }
 });
 

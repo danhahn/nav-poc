@@ -34,6 +34,8 @@ const levelTwoData = (state = [], action) => {
   switch (action.type) {
     case TYPES.UPDATE_LEVEL_TWO_ITEMS:
       return action.items;
+    case TYPES.RESET_LEVEL_TWO_ITEMS:
+      return [];
     case TYPES.RESET_NAV:
       return [];
     default:
@@ -45,6 +47,8 @@ const levelTwoTemplate = (state = null, action) => {
   switch (action.type) {
     case TYPES.UPDATE_LEVEL_TWO_TEMPLATE:
       return action.template;
+    case TYPES.RESET_LEVEL_TWO_TEMPLATE:
+      return null;
     case TYPES.RESET_NAV:
       return null;
     default:

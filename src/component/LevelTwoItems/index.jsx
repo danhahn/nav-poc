@@ -19,6 +19,11 @@ class LevelTwoItems extends Component {
   componentWillUnmount() {
     clearTimeout(this.timeout);
   }
+  componentDidUpdate(prevProps) {
+    if (!!this.props.secondaryActive === false && this.state.isActive) {
+      this.setState({ isActive: false });
+    }
+  }
   render() {
     const {
       levelTwoIsOpening,
