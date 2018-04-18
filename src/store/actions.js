@@ -6,7 +6,8 @@ export const TYPES = {
   UPDATE_LEVEL_TWO_TEMPLATE: 'UPDATE_LEVEL_TWO_TEMPLATE',
   RESET_LEVEL_TWO_TEMPLATE: 'RESET_LEVEL_TWO_TEMPLATE',
   SET_NAV_DATA: 'SET_NAV_DATA',
-  RESET_NAV: 'RESET_NAV'
+  RESET_NAV: 'RESET_NAV',
+  SET_LEVEL_TWO_MEDIA: 'SET_LEVEL_TWO_MEDIA'
 };
 
 export const resetNav = () => ({
@@ -44,4 +45,9 @@ export const updateLevelTwoTemplate = template => ({
 
 export const resetLevelTwoTemplate = () => ({
   type: TYPES.RESET_LEVEL_TWO_TEMPLATE
+});
+
+export const setLevelTwoMedia = media => ({
+  type: TYPES.SET_LEVEL_TWO_MEDIA,
+  media
 });

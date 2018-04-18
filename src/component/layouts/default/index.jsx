@@ -11,7 +11,7 @@ const NavItem = ({ title, url }) => (
   </li>
 );
 
-const NavDefaultLayout = ({ levelTwoItems }) => {
+const NavDefaultLayout = ({ levelTwoItems, media }) => {
   const nav = levelTwoItems.map(item => (
     <NavItem title={item.title} key={item.id} url={item.url} />
   ));
@@ -34,12 +34,11 @@ const NavDefaultLayout = ({ levelTwoItems }) => {
           </li>
         ))
       )}
-      <li className="contentNav__item">
-        <LinkWithImage />
-      </li>
-      <li className="contentNav__item">
-        <LinkWithImage />
-      </li>
+      {media.map(({ src, href, title }) => (
+        <li className="contentNav__item" key={title}>
+          <LinkWithImage src={src} href={href} title={title} />
+        </li>
+      ))}
     </ul>
   );
 };

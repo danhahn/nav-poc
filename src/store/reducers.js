@@ -56,10 +56,20 @@ const levelTwoTemplate = (state = null, action) => {
   }
 };
 
+const levelTwoMedia = (state = null, action) => {
+  switch(action.type) {
+    case TYPES.SET_LEVEL_TWO_MEDIA:
+      return action.media;
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   rawNavData,
   transformedNavData,
   levelOneData,
   levelTwoData,
-  levelTwoTemplate
+  levelTwoTemplate,
+  levelTwoMedia
 });

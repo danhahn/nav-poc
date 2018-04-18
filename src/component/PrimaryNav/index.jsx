@@ -79,7 +79,11 @@ export default class PrimaryNav extends Component {
 
   handleSecondaryMouseEnter(id, items, template) {
     clearTimeout(this.timeout);
-    const { updateLevelTwoData } = this.props;
+    const {
+      updateLevelTwoData,
+      updateLevelTwoMedia,
+      levelOneItems
+    } = this.props;
     this.setState({
       levelTwoIsOpening: true,
       secondaryActive: id
@@ -89,6 +93,7 @@ export default class PrimaryNav extends Component {
       levelTwoIsOpen: true
     });
     updateLevelTwoData(items, template);
+    updateLevelTwoMedia(id, levelOneItems);
   }
 
   handleSecondaryMouseExit() {
@@ -110,7 +115,8 @@ export default class PrimaryNav extends Component {
       levelTwoItems,
       levelTwoTemplate,
       enterDelay,
-      exitDelay
+      exitDelay,
+      levelTwoMedia
     } = this.props;
     const {
       levelOneIsOpening,
@@ -150,6 +156,7 @@ export default class PrimaryNav extends Component {
             levelTwoItems={levelTwoItems}
             secondaryActive={secondaryActive}
             levelTwoTemplate={levelTwoTemplate}
+            media={levelTwoMedia}
             handleThirdMouseEnter={this.handleThirdMouseEnter}
             handleThirdMouseExit={this.handleThirdMouseExit}
           />

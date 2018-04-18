@@ -17,7 +17,7 @@ const transformTrends = (trends, id) => {
   const transformedL3s = trends.map(l3 => transformL3Data(l3));
   return {
     id: `${id}-TRENDS`,
-    title: "TENDS",
+    title: "TRENDS",
     url: null,
     template: "trends",
     l3: transformedL3s
@@ -31,7 +31,17 @@ const transformL2Data = ({ id, name: title, seo, template, childCategories: l3s}
     title,
     url: formatUrl(seo),
     template: null,
-    l3: transformedL3s
+    l3: transformedL3s,
+    media: [{
+      src: "http://via.placeholder.com/150",
+      href: "http://www.michaelkors.com",
+      title: `${id}-slot 1`
+    },
+    {
+      src: "http://via.placeholder.com/150/bada55",
+      href: "http://www.michaelkors.com",
+      title: `${id}-slot 2`
+    }]
   };
 };
 
