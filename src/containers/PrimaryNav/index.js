@@ -37,7 +37,9 @@ const mapDispatchToProps = dispatch => ({
   },
   updateLevelTwoMedia: (id, levelOneItems) => {
     const [selectedItem] = levelOneItems.filter(item => item.id === id);
-    dispatch(setLevelTwoMedia(selectedItem.media));
+    if (selectedItem.media) {
+      dispatch(setLevelTwoMedia(selectedItem.media));
+    }
   }
 });
 
