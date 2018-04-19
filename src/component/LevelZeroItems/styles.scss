@@ -1,7 +1,6 @@
 @import "../PrimaryNav/styles.scss";
 
 .PrimaryNav {
-  border-bottom: 1px solid black;
   background-color: #fff;
   position: relative;
   z-index: 1000;
@@ -24,7 +23,7 @@
     padding: 0 3em;
     display: block;
     text-decoration: none;
-    color: black;
+    color: #020100;
     @include linkBorder();
     &.active {
       @include linkBorder();

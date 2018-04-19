@@ -4,7 +4,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  background-color: tan;
+  background-color: #f7f6f2;
   transform: translateY(-100%);
   transition: transform 300ms 500ms;
   z-index: 900;
@@ -14,7 +14,6 @@
   }
   &.levelOneIsOpen {
     transform: translateY(0);
-    background-color: orange;
   }
 
   &__list {
@@ -34,7 +33,7 @@
     padding: 1em 3em;
     display: block;
     text-decoration: none;
-    color: black;
+    color: #020100;
     &.active {
       font-weight: bold;
     }

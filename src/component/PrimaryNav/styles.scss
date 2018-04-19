@@ -5,11 +5,17 @@
     &::after {
       content: "";
       position: absolute;
-      background-color: #000000;
+      background-color: #020100;
       height: 2px;
       left: calc(3em - 5px);
       right: calc(3em - 5px);
       bottom: -3px;
     }
+  }
+}
+
+.PrimaryNav {
+  a {
+    color: #0c0c0c;
   }
 }

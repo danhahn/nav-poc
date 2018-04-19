@@ -33,12 +33,12 @@ const transformL2Data = ({ id, name: title, seo, template, childCategories: l3s}
     template: null,
     l3: transformedL3s,
     media: [{
-      src: "http://via.placeholder.com/150",
+      src: "http://via.placeholder.com/205x165/00ffff",
       href: "http://www.michaelkors.com",
       title: `${id}-slot 1`
     },
     {
-      src: "http://via.placeholder.com/150/bada55",
+      src: "http://via.placeholder.com/205x165/bada55",
       href: "http://www.michaelkors.com",
       title: `${id}-slot 2`
     }]
