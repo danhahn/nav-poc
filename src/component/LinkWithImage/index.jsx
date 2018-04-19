@@ -11,7 +11,7 @@ export default class LinkWithImage extends Component {
     this.timeout = null;
   }
   componentDidMount() {
-    setTimeout(() => {
+    this.timeout = setTimeout(() => {
       this.setState({ isHasBeenAdded: !this.state.isHasBeenAdded });
     }, 1);
   }
