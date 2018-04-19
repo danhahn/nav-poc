@@ -40,7 +40,7 @@ export default class LinkWithImage extends Component {
 }
 
 LinkWithImage.defaultProps = {
-  src: "http://via.placeholder.com/150",
+  src: "http://via.placeholder.com/330x266",
   href: "http://www.michaelkors.com",
   title: "place holder text"
 };
