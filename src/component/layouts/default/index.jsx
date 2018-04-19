@@ -30,7 +30,6 @@ const NavDefaultLayout = ({ levelTwoItems, media }) => {
         </React.Fragment>
       ) : (
         splitNav.map((part, i) => {
-          console.log(i === 0);
           const itemClasses = classNames("contentNav__item", {
             isFirstColumn: i === 0
           });

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LevelZeroItems from "../LevelZeroItems";
 import LevelOneItems from "../LevelOneItems";
 import LevelTwoItems from "../LevelTwoItems";
+import Overlay from "../Overlay";
 import "./styles.css";
 
 export default class PrimaryNav extends Component {
@@ -15,7 +16,8 @@ export default class PrimaryNav extends Component {
       levelOneIsCloseing: false,
       levelOneIsClosed: false,
       primaryActive: null,
-      secondaryActive: null
+      secondaryActive: null,
+      primaryNavOffSetHeight: null
     };
     this.handlePrimaryMouseEnter = this.handlePrimaryMouseEnter.bind(this);
     this.handlePrimaryMouseExit = this.handlePrimaryMouseExit.bind(this);
@@ -36,7 +38,8 @@ export default class PrimaryNav extends Component {
       levelOneIsOpen: false,
       levelOneIsOpening: false,
       levelTwoIsOpen: false,
-      levelTwoIsOpening: false
+      levelTwoIsOpening: false,
+      primaryNavOffSetHeight: null
     });
   }
 
@@ -54,12 +57,14 @@ export default class PrimaryNav extends Component {
     }, this.props.exitDelay);
   }
 
-  handlePrimaryMouseEnter(id, items) {
+  handlePrimaryMouseEnter(id, items, el) {
+    const { y: primaryNavOffSetHeight } = el.getBoundingClientRect();
     clearTimeout(this.timeout);
     const { updateLevelOneData, resetLevelTwoData, levelTwoItems } = this.props;
     this.setState({
       levelOneIsOpening: true,
-      primaryActive: id
+      primaryActive: id,
+      primaryNavOffSetHeight
     });
     this.constructTimeoutEnter({
       levelOneIsOpening: false,
@@ -124,7 +129,8 @@ export default class PrimaryNav extends Component {
       levelTwoIsOpening,
       levelTwoIsOpen,
       primaryActive,
-      secondaryActive
+      secondaryActive,
+      primaryNavOffSetHeight
     } = this.state;
     const timing = {
       enterDelay,
@@ -160,6 +166,9 @@ export default class PrimaryNav extends Component {
             handleThirdMouseEnter={this.handleThirdMouseEnter}
             handleThirdMouseExit={this.handleThirdMouseExit}
           />
+        ) : null}
+        {primaryNavOffSetHeight ? (
+          <Overlay top={primaryNavOffSetHeight} />
         ) : null}
       </React.Fragment>
     );

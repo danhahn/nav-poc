@@ -9,7 +9,7 @@ const LevelZeroItems = ({
   primaryActive
 }) => {
   return (
-    <nav className="PrimaryNav">
+    <nav className="PrimaryNav" ref={el => (this.primaryNav = el)}>
       <ul className="PrimaryNav__list">
         {items.map(primary => {
           const primaryNavStyle = classNames("PrimaryNav__link", {
@@ -21,7 +21,7 @@ const LevelZeroItems = ({
               className="PrimaryNav__item"
               key={primary.id}
               onMouseEnter={() =>
-                handlePrimaryMouseEnter(primary.id, primary.l2)
+                handlePrimaryMouseEnter(primary.id, primary.l2, this.primaryNav)
               }
               onMouseLeave={handlePrimaryMouseExit}
             >

@@ -17,10 +17,10 @@ class App extends Component {
     return <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
         </header>
-        <PrimaryNav exitDelay={100000000}/>
+        <PrimaryNav exitDelay={10000000} />
         <article className="App-intro">
+          <img src="/HP_PROMO_1.jpg" alt="" />
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
             tenetur deleniti mollitia quia voluptatibus nisi omnis, suscipit
