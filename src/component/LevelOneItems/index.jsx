@@ -59,7 +59,8 @@ export default class LevelOneItems extends Component {
                       handleSecondaryMouseEnter(
                         secondary.id,
                         secondary.l3,
-                        secondary.template
+                        secondary.template,
+                        secondary.hasFilter
                       )
                     }
                     onMouseLeave={handleSecondaryMouseExit}

@@ -1,0 +1,50 @@
+.hasFilterWrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 400ms;
+  .Filters {
+    transition: all 300ms;
+    opacity: 0;
+  }
+}
+
+.hasFilterOpening {
+  max-height: 83px;
+  .Filters {
+    opacity: 0;
+  }
+}
+
+.hasFilterOpen {
+  max-height: 83px;
+  .Filters {
+    opacity: 1;
+  }
+}
+
+.Filters {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  p {
+    margin: 0;
+  }
+  ul {
+    margin: 1em;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 25px);
+    grid-gap: 5px;
+    li {
+      box-sizing: border-box;
+      width: 25px;
+      height: 25px;
+      border: 1px solid black;
+      box-shadow: 0 0 0 1px white inset;
+      border-radius: 50%;
+    }
+  }
+}

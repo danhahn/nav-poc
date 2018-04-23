@@ -2104,6 +2104,7 @@
           "loyaltyTiers": null,
           "priceFilterType": "default",
           "name": "HANDBAGS",
+          "hasFilter": true,
           "seo": {
             "defaultTitle":
               "Designer Handbags, Backpacks & Tech Accessories | Michael Kors\t\t\t\t\t\t",
@@ -5700,7 +5701,8 @@
             "internalURL": null
           },
           "dimensionId": "N-1hi14iv"
-        }      ],
+        }
+      ],
       "trendCategories": [
         {
           "template": {

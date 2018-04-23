@@ -57,9 +57,18 @@ const levelTwoTemplate = (state = null, action) => {
 };
 
 const levelTwoMedia = (state = null, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case TYPES.SET_LEVEL_TWO_MEDIA:
       return action.media;
+    default:
+      return state;
+  }
+}
+
+const levelTwoFilter = (state = null, action) => {
+  switch (action.type) {
+    case TYPES.SET_LEVEL_TWO_HASFILTER:
+      return action.hasFilter;
     default:
       return state;
   }
@@ -71,5 +80,6 @@ export default combineReducers({
   levelOneData,
   levelTwoData,
   levelTwoTemplate,
-  levelTwoMedia
+  levelTwoMedia,
+  levelTwoFilter
 });

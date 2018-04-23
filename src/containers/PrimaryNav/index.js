@@ -8,7 +8,8 @@ import {
   resetLevelTwoItems,
   resetLevelTwoTemplate,
   resetNav,
-  setLevelTwoMedia
+  setLevelTwoMedia,
+  setLevelHasFilter
 } from "../../store/actions";
 
 const mapStateToProps = state => ({
@@ -16,7 +17,8 @@ const mapStateToProps = state => ({
   levelOneItems: state.navigation.levelOneData,
   levelTwoItems: state.navigation.levelTwoData,
   levelTwoTemplate: state.navigation.levelTwoTemplate,
-  levelTwoMedia: state.navigation.levelTwoMedia
+  levelTwoMedia: state.navigation.levelTwoMedia,
+  levelTwoFilter: state.navigation.levelTwoFilter
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -40,6 +42,9 @@ const mapDispatchToProps = dispatch => ({
     if (selectedItem.media) {
       dispatch(setLevelTwoMedia(selectedItem.media));
     }
+  },
+  updateLevel2HasFilter: (hasFilter = null) => {
+    dispatch(setLevelHasFilter(hasFilter));
   }
 });
 

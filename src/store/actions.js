@@ -7,7 +7,8 @@ export const TYPES = {
   RESET_LEVEL_TWO_TEMPLATE: 'RESET_LEVEL_TWO_TEMPLATE',
   SET_NAV_DATA: 'SET_NAV_DATA',
   RESET_NAV: 'RESET_NAV',
-  SET_LEVEL_TWO_MEDIA: 'SET_LEVEL_TWO_MEDIA'
+  SET_LEVEL_TWO_MEDIA: 'SET_LEVEL_TWO_MEDIA',
+  SET_LEVEL_TWO_HASFILTER: 'SET_LEVEL_TWO_HASFILTER',
 };
 
 export const resetNav = () => ({
@@ -50,4 +51,9 @@ export const resetLevelTwoTemplate = () => ({
 export const setLevelTwoMedia = media => ({
   type: TYPES.SET_LEVEL_TWO_MEDIA,
   media
+});
+
+export const setLevelHasFilter = hasFilter => ({
+  type: TYPES.SET_LEVEL_TWO_HASFILTER,
+  hasFilter
 });

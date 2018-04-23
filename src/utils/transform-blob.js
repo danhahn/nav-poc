@@ -24,7 +24,7 @@ const transformTrends = (trends, id) => {
   }
 }
 
-const transformL2Data = ({ id, name: title, seo, template, childCategories: l3s}) => {
+const transformL2Data = ({ id, name: title, seo, template, childCategories: l3s, hasFilter}) => {
   const transformedL3s = l3s.map(l3 => transformL3Data(l3));
   return {
     id,
@@ -32,6 +32,7 @@ const transformL2Data = ({ id, name: title, seo, template, childCategories: l3s}
     url: formatUrl(seo),
     template: null,
     l3: transformedL3s,
+    hasFilter,
     media: [{
       src: "http://via.placeholder.com/330x266/00ffff",
       href: "http://www.michaelkors.com",
