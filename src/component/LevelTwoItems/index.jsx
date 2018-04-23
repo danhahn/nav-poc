@@ -11,11 +11,13 @@ class LevelTwoItems extends Component {
       isActive: false,
       hasFilterOpening: false,
       hasFilterOpen: false,
-      localHasFilters: null
+      localHasFilters: null,
+      l3Offset: 0
     };
     this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
     this.showFilters = this.showFilters.bind(this);
     this.hideFilters = this.hideFilters.bind(this);
+    this.updateL3Offset = this.updateL3Offset.bind(this);
     this.timeout = null;
     this.hasFilterTimeout = null;
   }
@@ -62,8 +64,12 @@ class LevelTwoItems extends Component {
       }
     }
   }
+  updateL3Offset(l3Offset) {
+    console.log(l3Offset);
+    this.setState({ l3Offset });
+  }
   render() {
-    const { hasFilterOpening, hasFilterOpen } = this.state;
+    const { hasFilterOpening, hasFilterOpen, l3Offset } = this.state;
     const {
       levelTwoIsOpening,
       levelTwoIsOpen,
@@ -95,9 +101,14 @@ class LevelTwoItems extends Component {
           levelTwoItems={levelTwoItems}
           template={levelTwoTemplate}
           media={media}
+          updateL3Offset={this.updateL3Offset}
         />
-        <div className={filterClasses} ref={el => (this.filterWrapper = el)}>
-          <Filters />
+        <div
+          className={filterClasses}
+          ref={el => (this.filterWrapper = el)}
+          style={{ marginLeft: l3Offset }}
+        >
+          <Filters l3Offset={l3Offset} />
         </div>
       </nav>
     );

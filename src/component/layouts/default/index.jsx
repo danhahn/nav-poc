@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import chunk from "lodash/chunk";
 import classNames from "classnames";
 import LinkWithImage from "../../LinkWithImage";
@@ -12,41 +12,72 @@ const NavItem = ({ title, url }) => (
   </li>
 );
 
-const NavDefaultLayout = ({ levelTwoItems, media }) => {
-  const nav = levelTwoItems.map(item => (
-    <NavItem title={item.title} key={item.id} url={item.url} />
-  ));
+class NavDefaultLayout extends Component {
+  constructor(props) {
+    super(props);
+    this.updateL3 = this.updateL3.bind(this);
+  }
+  componentDidMount() {
+    this.updateL3();
+  }
 
-  const splitNav = chunk(nav, 7);
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.levelTwoItems !== this.props.levelTwoItems) {
+      this.updateL3();
+    }
+  }
 
-  return (
-    <ul className="contentNav__list">
-      {splitNav.length === 1 ? (
-        <React.Fragment>
-          <li className="contentNav__item isEmpty" />
-          <li className="contentNav__item">
-            <ul className="NavDefaultLayout">{splitNav[0]}</ul>
-          </li>
-        </React.Fragment>
-      ) : (
-        splitNav.map((part, i) => {
-          const itemClasses = classNames("contentNav__item", {
-            isFirstColumn: i === 0
-          });
-          return (
-            <li className={itemClasses} key={i}>
-              <ul className="NavDefaultLayout">{part}</ul>
+  updateL3() {
+    const { updateL3Offset } = this.props;
+    const { x } = this.l3Offset.getBoundingClientRect();
+    updateL3Offset(x);
+  }
+
+  render() {
+    const { levelTwoItems, media } = this.props;
+    const nav = levelTwoItems.map(item => (
+      <NavItem title={item.title} key={item.id} url={item.url} />
+    ));
+
+    const splitNav = chunk(nav, 7);
+
+    return (
+      <ul className="contentNav__list">
+        {splitNav.length === 1 ? (
+          <React.Fragment>
+            <li className="contentNav__item isEmpty" />
+            <li className="contentNav__item">
+              <ul className="NavDefaultLayout" ref={el => (this.l3Offset = el)}>
+                {splitNav[0]}
+              </ul>
             </li>
-          );
-        })
-      )}
-      {media.map(({ src, href, title }) => (
-        <li className="contentNav__item" key={title}>
-          <LinkWithImage src={src} href={href} title={title} />
-        </li>
-      ))}
-    </ul>
-  );
-};
+          </React.Fragment>
+        ) : (
+          splitNav.map((part, i) => {
+            const itemClasses = classNames("contentNav__item", {
+              isFirstColumn: i === 0
+            });
+            let ulRef = null;
+            if (i === 0) {
+              ulRef = el => (this.l3Offset = el);
+            }
+            return (
+              <li className={itemClasses} key={i}>
+                <ul className="NavDefaultLayout" ref={ulRef}>
+                  {part}
+                </ul>
+              </li>
+            );
+          })
+        )}
+        {media.map(({ src, href, title }) => (
+          <li className="contentNav__item" key={title}>
+            <LinkWithImage src={src} href={href} title={title} />
+          </li>
+        ))}
+      </ul>
+    );
+  }
+}
 
 export default NavDefaultLayout;

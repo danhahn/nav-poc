@@ -2162,10 +2162,7 @@
                   }
                 ]
               },
-              {
-                "name": "gridHeroContentSection",
-                "components": []
-              },
+              { "name": "gridHeroContentSection", "components": [] },
               {
                 "name": "productGridSection",
                 "components": [
@@ -2196,14 +2193,8 @@
                   }
                 ]
               },
-              {
-                "name": "heroContentSection",
-                "components": []
-              },
-              {
-                "name": "secondaryHeroSection",
-                "components": []
-              }
+              { "name": "heroContentSection", "components": [] },
+              { "name": "secondaryHeroSection", "components": [] }
             ],
             "type": "PLP"
           },
@@ -2248,10 +2239,7 @@
                       }
                     ]
                   },
-                  {
-                    "name": "gridHeroContentSection",
-                    "components": []
-                  },
+                  { "name": "gridHeroContentSection", "components": [] },
                   {
                     "name": "productGridSection",
                     "components": [
@@ -2282,14 +2270,8 @@
                       }
                     ]
                   },
-                  {
-                    "name": "heroContentSection",
-                    "components": []
-                  },
-                  {
-                    "name": "secondaryHeroSection",
-                    "components": []
-                  }
+                  { "name": "heroContentSection", "components": [] },
+                  { "name": "secondaryHeroSection", "components": [] }
                 ],
                 "type": "PLP"
               },
@@ -2357,10 +2339,7 @@
                       }
                     ]
                   },
-                  {
-                    "name": "gridHeroContentSection",
-                    "components": []
-                  },
+                  { "name": "gridHeroContentSection", "components": [] },
                   {
                     "name": "productGridSection",
                     "components": [
@@ -2391,14 +2370,8 @@
                       }
                     ]
                   },
-                  {
-                    "name": "heroContentSection",
-                    "components": []
-                  },
-                  {
-                    "name": "secondaryHeroSection",
-                    "components": []
-                  }
+                  { "name": "heroContentSection", "components": [] },
+                  { "name": "secondaryHeroSection", "components": [] }
                 ],
                 "type": "PLP"
               },
@@ -2465,10 +2438,7 @@
                       }
                     ]
                   },
-                  {
-                    "name": "gridHeroContentSection",
-                    "components": []
-                  },
+                  { "name": "gridHeroContentSection", "components": [] },
                   {
                     "name": "productGridSection",
                     "components": [
@@ -2499,14 +2469,8 @@
                       }
                     ]
                   },
-                  {
-                    "name": "heroContentSection",
-                    "components": []
-                  },
-                  {
-                    "name": "secondaryHeroSection",
-                    "components": []
-                  }
+                  { "name": "heroContentSection", "components": [] },
+                  { "name": "secondaryHeroSection", "components": [] }
                 ],
                 "type": "PLP"
               },
@@ -2574,10 +2538,7 @@
                       }
                     ]
                   },
-                  {
-                    "name": "gridHeroContentSection",
-                    "components": []
-                  },
+                  { "name": "gridHeroContentSection", "components": [] },
                   {
                     "name": "productGridSection",
                     "components": [
@@ -2608,14 +2569,8 @@
                       }
                     ]
                   },
-                  {
-                    "name": "heroContentSection",
-                    "components": []
-                  },
-                  {
-                    "name": "secondaryHeroSection",
-                    "components": []
-                  }
+                  { "name": "heroContentSection", "components": [] },
+                  { "name": "secondaryHeroSection", "components": [] }
                 ],
                 "type": "PLP"
               },
@@ -2681,10 +2636,7 @@
                       }
                     ]
                   },
-                  {
-                    "name": "gridHeroContentSection",
-                    "components": []
-                  },
+                  { "name": "gridHeroContentSection", "components": [] },
                   {
                     "name": "productGridSection",
                     "components": [
@@ -2715,14 +2667,8 @@
                       }
                     ]
                   },
-                  {
-                    "name": "heroContentSection",
-                    "components": []
-                  },
-                  {
-                    "name": "secondaryHeroSection",
-                    "components": []
-                  }
+                  { "name": "heroContentSection", "components": [] },
+                  { "name": "secondaryHeroSection", "components": [] }
                 ],
                 "type": "PLP"
               },
@@ -2790,10 +2736,7 @@
                       }
                     ]
                   },
-                  {
-                    "name": "gridHeroContentSection",
-                    "components": []
-                  },
+                  { "name": "gridHeroContentSection", "components": [] },
                   {
                     "name": "productGridSection",
                     "components": [
@@ -2824,14 +2767,8 @@
                       }
                     ]
                   },
-                  {
-                    "name": "heroContentSection",
-                    "components": []
-                  },
-                  {
-                    "name": "secondaryHeroSection",
-                    "components": []
-                  }
+                  { "name": "heroContentSection", "components": [] },
+                  { "name": "secondaryHeroSection", "components": [] }
                 ],
                 "type": "PLP"
               },
@@ -2900,10 +2837,7 @@
                       }
                     ]
                   },
-                  {
-                    "name": "gridHeroContentSection",
-                    "components": []
-                  },
+                  { "name": "gridHeroContentSection", "components": [] },
                   {
                     "name": "productGridSection",
                     "components": [
@@ -2934,14 +2868,8 @@
                       }
                     ]
                   },
-                  {
-                    "name": "heroContentSection",
-                    "components": []
-                  },
-                  {
-                    "name": "secondaryHeroSection",
-                    "components": []
-                  }
+                  { "name": "heroContentSection", "components": [] },
+                  { "name": "secondaryHeroSection", "components": [] }
                 ],
                 "type": "PLP"
               },
@@ -3009,10 +2937,7 @@
                       }
                     ]
                   },
-                  {
-                    "name": "gridHeroContentSection",
-                    "components": []
-                  },
+                  { "name": "gridHeroContentSection", "components": [] },
                   {
                     "name": "productGridSection",
                     "components": [
@@ -3043,14 +2968,8 @@
                       }
                     ]
                   },
-                  {
-                    "name": "heroContentSection",
-                    "components": []
-                  },
-                  {
-                    "name": "secondaryHeroSection",
-                    "components": []
-                  }
+                  { "name": "heroContentSection", "components": [] },
+                  { "name": "secondaryHeroSection", "components": [] }
                 ],
                 "type": "PLP"
               },
@@ -3116,10 +3035,7 @@
                       }
                     ]
                   },
-                  {
-                    "name": "gridHeroContentSection",
-                    "components": []
-                  },
+                  { "name": "gridHeroContentSection", "components": [] },
                   {
                     "name": "productGridSection",
                     "components": [
@@ -3150,14 +3066,8 @@
                       }
                     ]
                   },
-                  {
-                    "name": "heroContentSection",
-                    "components": []
-                  },
-                  {
-                    "name": "secondaryHeroSection",
-                    "components": []
-                  }
+                  { "name": "heroContentSection", "components": [] },
+                  { "name": "secondaryHeroSection", "components": [] }
                 ],
                 "type": "PLP"
               },
@@ -3186,6 +3096,7 @@
               "dimensionId": "N-d0t936"
             }
           ],
+          "hasFilter": true,
           "trendCategories": [],
           "loyaltyTiers": null,
           "priceFilterType": "default",
@@ -7983,10 +7894,7 @@
                   }
                 ]
               },
-              {
-                "name": "gridHeroContentSection",
-                "components": []
-              },
+              { "name": "gridHeroContentSection", "components": [] },
               {
                 "name": "productGridSection",
                 "components": [
@@ -8011,14 +7919,8 @@
                   }
                 ]
               },
-              {
-                "name": "heroContentSection",
-                "components": []
-              },
-              {
-                "name": "secondaryHeroSection",
-                "components": []
-              }
+              { "name": "heroContentSection", "components": [] },
+              { "name": "secondaryHeroSection", "components": [] }
             ],
             "type": "PLP"
           },
@@ -8063,10 +7965,7 @@
                       }
                     ]
                   },
-                  {
-                    "name": "gridHeroContentSection",
-                    "components": []
-                  },
+                  { "name": "gridHeroContentSection", "components": [] },
                   {
                     "name": "productGridSection",
                     "components": [
@@ -8091,14 +7990,8 @@
                       }
                     ]
                   },
-                  {
-                    "name": "heroContentSection",
-                    "components": []
-                  },
-                  {
-                    "name": "secondaryHeroSection",
-                    "components": []
-                  }
+                  { "name": "heroContentSection", "components": [] },
+                  { "name": "secondaryHeroSection", "components": [] }
                 ],
                 "type": "PLP"
               },
@@ -8163,10 +8056,7 @@
                       }
                     ]
                   },
-                  {
-                    "name": "gridHeroContentSection",
-                    "components": []
-                  },
+                  { "name": "gridHeroContentSection", "components": [] },
                   {
                     "name": "productGridSection",
                     "components": [
@@ -8191,14 +8081,8 @@
                       }
                     ]
                   },
-                  {
-                    "name": "heroContentSection",
-                    "components": []
-                  },
-                  {
-                    "name": "secondaryHeroSection",
-                    "components": []
-                  }
+                  { "name": "heroContentSection", "components": [] },
+                  { "name": "secondaryHeroSection", "components": [] }
                 ],
                 "type": "PLP"
               },
@@ -8263,10 +8147,7 @@
                       }
                     ]
                   },
-                  {
-                    "name": "gridHeroContentSection",
-                    "components": []
-                  },
+                  { "name": "gridHeroContentSection", "components": [] },
                   {
                     "name": "productGridSection",
                     "components": [
@@ -8291,14 +8172,8 @@
                       }
                     ]
                   },
-                  {
-                    "name": "heroContentSection",
-                    "components": []
-                  },
-                  {
-                    "name": "secondaryHeroSection",
-                    "components": []
-                  }
+                  { "name": "heroContentSection", "components": [] },
+                  { "name": "secondaryHeroSection", "components": [] }
                 ],
                 "type": "PLP"
               },
@@ -8365,10 +8240,7 @@
                       }
                     ]
                   },
-                  {
-                    "name": "gridHeroContentSection",
-                    "components": []
-                  },
+                  { "name": "gridHeroContentSection", "components": [] },
                   {
                     "name": "productGridSection",
                     "components": [
@@ -8393,14 +8265,8 @@
                       }
                     ]
                   },
-                  {
-                    "name": "heroContentSection",
-                    "components": []
-                  },
-                  {
-                    "name": "secondaryHeroSection",
-                    "components": []
-                  }
+                  { "name": "heroContentSection", "components": [] },
+                  { "name": "secondaryHeroSection", "components": [] }
                 ],
                 "type": "PLP"
               },
@@ -8429,6 +8295,7 @@
               "dimensionId": "N-xserh2"
             }
           ],
+          "hasFilter": true,
           "trendCategories": [],
           "loyaltyTiers": null,
           "priceFilterType": "salePriceOnly",
