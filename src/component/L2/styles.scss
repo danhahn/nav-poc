@@ -9,10 +9,10 @@
   transition: transform 300ms 500ms;
   z-index: 900;
 
-  &.levelOneIsOpening {
+  &.isOpening {
     transform: translateY(0);
   }
-  &.levelOneIsOpen {
+  &.isOpen {
     transform: translateY(0);
   }
 
@@ -26,7 +26,7 @@
     max-width: 1440px;
     display: flex;
     justify-content: center;
-    &.levelOneIsOpen {
+    &.isOpen {
       opacity: 1;
     }
   }

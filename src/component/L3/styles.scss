@@ -8,10 +8,10 @@
   margin-top: 50px;
   opacity: 0;
   z-index: 800;
-  &.levelTwoIsOpen {
+  &.isOpen {
     background-color: rgba(white, 0.9);
   }
-  &.levelTwoIsOpen,
+  &.isOpen,
   &.isActive {
     transform: translateY(0);
     opacity: 1;

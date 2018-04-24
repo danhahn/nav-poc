@@ -12,7 +12,7 @@ export default class LevelOneItems extends Component {
   }
   componentDidMount() {
     this.timeout = setTimeout(() => {
-      this.setState({ isActive: !this.state.isActive });
+      this.setState({ isActive: true });
     }, 100);
   }
   componentWillUnmount() {
@@ -20,25 +20,25 @@ export default class LevelOneItems extends Component {
   }
   render() {
     const {
-      levelOneIsOpening,
-      levelOneIsOpen,
+      isOpening,
+      isOpen,
       levelOneIsCloseing,
       levelOneIsClosed,
       levelOneItems,
-      handleSecondaryMouseEnter,
-      handleSecondaryMouseExit,
-      secondaryActive,
+      mouseEnter,
+      mouseExit,
+      isActive,
       enterDelay
     } = this.props;
     const levelOneStyles = classNames("SecondaryNav", {
-      levelOneIsOpening,
-      levelOneIsOpen,
+      isOpening,
+      isOpen,
       levelOneIsCloseing,
       levelOneIsClosed
     });
     const listStyles = classNames("SecondaryNav__list", {
       "SecondaryNav__list--active": this.state.isActive,
-      levelOneIsOpen
+      isOpen
     });
     return (
       <nav
@@ -49,21 +49,21 @@ export default class LevelOneItems extends Component {
           {levelOneItems
             ? levelOneItems.map(secondary => {
                 const linkStyles = classNames("SecondaryNav__link", {
-                  active: secondary.id === secondaryActive
+                  active: secondary.id === isActive
                 });
                 return (
                   <li
                     className="SecondaryNav__item"
                     key={secondary.id}
                     onMouseEnter={() =>
-                      handleSecondaryMouseEnter(
+                      mouseEnter(
                         secondary.id,
                         secondary.l3,
                         secondary.template,
                         secondary.hasFilter
                       )
                     }
-                    onMouseLeave={handleSecondaryMouseExit}
+                    onMouseLeave={mouseExit}
                   >
                     <a href="" className={linkStyles}>
                       {secondary.title}

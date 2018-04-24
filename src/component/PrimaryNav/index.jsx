@@ -15,7 +15,7 @@ export default class PrimaryNav extends Component {
       levelTwoIsOpen: false,
       levelOneIsCloseing: false,
       levelOneIsClosed: false,
-      primaryActive: null,
+      levelOneActive: null,
       secondaryActive: null,
       primaryNavOffSetHeight: null
     };
@@ -33,7 +33,7 @@ export default class PrimaryNav extends Component {
 
   resetNavData() {
     this.setState({
-      primaryActive: null,
+      levelOneActive: null,
       secondaryActive: null,
       levelOneIsOpen: false,
       levelOneIsOpening: false,
@@ -63,7 +63,7 @@ export default class PrimaryNav extends Component {
     const { updateLevelOneData, resetLevelTwoData, levelTwoItems } = this.props;
     this.setState({
       levelOneIsOpening: true,
-      primaryActive: id,
+      levelOneActive: id,
       primaryNavOffSetHeight
     });
     this.constructTimeoutEnter({
@@ -131,7 +131,7 @@ export default class PrimaryNav extends Component {
       levelOneIsOpen,
       levelTwoIsOpening,
       levelTwoIsOpen,
-      primaryActive,
+      levelOneActive,
       secondaryActive,
       primaryNavOffSetHeight
     } = this.state;
@@ -144,31 +144,31 @@ export default class PrimaryNav extends Component {
         <L1
           {...timing}
           items={items}
-          handlePrimaryMouseEnter={this.handlePrimaryMouseEnter}
-          handlePrimaryMouseExit={this.handlePrimaryMouseExit}
-          primaryActive={primaryActive}
+          mouseEnter={this.handlePrimaryMouseEnter}
+          mouseExit={this.handlePrimaryMouseExit}
+          isActive={levelOneActive}
         />
         <L2
           {...timing}
-          levelOneIsOpening={levelOneIsOpening}
-          levelOneIsOpen={levelOneIsOpen}
-          handleSecondaryMouseEnter={this.handleSecondaryMouseEnter}
-          handleSecondaryMouseExit={this.handleSecondaryMouseExit}
+          isOpening={levelOneIsOpening}
+          isOpen={levelOneIsOpen}
+          mouseEnter={this.handleSecondaryMouseEnter}
+          mouseExit={this.handleSecondaryMouseExit}
           levelOneItems={levelOneItems}
-          secondaryActive={secondaryActive}
+          isActive={secondaryActive}
         />
         {levelTwoItems.length ? (
           <L3
             {...timing}
-            levelTwoIsOpening={levelTwoIsOpening}
-            levelTwoIsOpen={levelTwoIsOpen}
+            isOpening={levelTwoIsOpening}
+            isOpen={levelTwoIsOpen}
             levelTwoItems={levelTwoItems}
             secondaryActive={secondaryActive}
             levelTwoTemplate={levelTwoTemplate}
             media={levelTwoMedia}
             hasFilter={levelTwoFilter}
-            handleThirdMouseEnter={this.handleThirdMouseEnter}
-            handleThirdMouseExit={this.handleThirdMouseExit}
+            mouseEnter={this.handleThirdMouseEnter}
+            mouseExit={this.handleThirdMouseExit}
           />
         ) : null}
         {primaryNavOffSetHeight ? (

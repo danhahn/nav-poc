@@ -84,19 +84,19 @@ class LevelTwoItems extends Component {
       hasFilterClosing
     } = this.state;
     const {
-      levelTwoIsOpening,
-      levelTwoIsOpen,
+      isOpening,
+      isOpen,
       levelTwoItems,
       levelTwoTemplate,
-      handleThirdMouseEnter,
-      handleThirdMouseExit,
+      mouseEnter,
+      mouseExit,
       enterDelay,
       media
     } = this.props;
     const { isActive } = this.state;
     const levelTwoStyles = classNames("contentNav", {
-      levelTwoIsOpening,
-      levelTwoIsOpen,
+      isOpening,
+      isOpen,
       isActive
     });
     const filterClasses = classNames("hasFilterWrapper", {
@@ -107,8 +107,8 @@ class LevelTwoItems extends Component {
     return (
       <nav
         className={levelTwoStyles}
-        onMouseEnter={handleThirdMouseEnter}
-        onMouseLeave={handleThirdMouseExit}
+        onMouseEnter={mouseEnter}
+        onMouseLeave={mouseExit}
         style={{ transitionDelay: `${enterDelay / 2}ms` }}
       >
         <ChooseLayout
