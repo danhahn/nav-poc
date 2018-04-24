@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import LevelZeroItems from "../LevelZeroItems";
-import LevelOneItems from "../LevelOneItems";
-import LevelTwoItems from "../LevelTwoItems";
+import L1 from "../L1";
+import L2 from "../L2";
+import L3 from "../L3";
 import Overlay from "../Overlay";
 import "./styles.css";
 
@@ -141,14 +141,14 @@ export default class PrimaryNav extends Component {
     };
     return (
       <React.Fragment>
-        <LevelZeroItems
+        <L1
           {...timing}
           items={items}
           handlePrimaryMouseEnter={this.handlePrimaryMouseEnter}
           handlePrimaryMouseExit={this.handlePrimaryMouseExit}
           primaryActive={primaryActive}
         />
-        <LevelOneItems
+        <L2
           {...timing}
           levelOneIsOpening={levelOneIsOpening}
           levelOneIsOpen={levelOneIsOpen}
@@ -158,7 +158,7 @@ export default class PrimaryNav extends Component {
           secondaryActive={secondaryActive}
         />
         {levelTwoItems.length ? (
-          <LevelTwoItems
+          <L3
             {...timing}
             levelTwoIsOpening={levelTwoIsOpening}
             levelTwoIsOpen={levelTwoIsOpen}
@@ -180,6 +180,6 @@ export default class PrimaryNav extends Component {
 }
 
 PrimaryNav.defaultProps = {
-  enterDelay: 800,
+  enterDelay: 500,
   exitDelay: 500
 };
