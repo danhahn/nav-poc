@@ -1,3 +1,12 @@
+const capitalizeWords = (words) => {
+  const wordParts = words.trim().split(" ");
+  return wordParts.map(word => {
+    const [upper, ...rest] = [...word];
+    const lower = rest.map(letter => letter.toLowerCase()).join("");
+    return `${upper}${lower}`;
+  }).join(" ");
+};
+
 const formatUrl = (urlData, local = "") => {
   let url = null;
   switch (urlData) {
@@ -17,7 +26,7 @@ const transformTrends = (trends, id) => {
   const transformedL3s = trends.map(l3 => transformL3Data(l3));
   return {
     id: `${id}-TRENDS`,
-    title: "TRENDS",
+    title: capitalizeWords("TRENDS LINK"),
     url: null,
     template: "trends",
     l3: transformedL3s
@@ -28,7 +37,7 @@ const transformL2Data = ({ id, name: title, seo, template, childCategories: l3s,
   const transformedL3s = l3s.map(l3 => transformL3Data(l3));
   return {
     id,
-    title,
+    title: capitalizeWords(title),
     url: formatUrl(seo),
     template: null,
     l3: transformedL3s,
@@ -49,7 +58,7 @@ const transformL2Data = ({ id, name: title, seo, template, childCategories: l3s,
 const transformL3Data = ({id, name: title, seo}) => {
   return {
     id,
-    title,
+    title: capitalizeWords(title),
     url: formatUrl(seo)
   }
 }
@@ -66,7 +75,7 @@ const transformData = (data) => {
     const { id, seo, childCategories: l2, trendCategories: trends} = category;
     return { id,
        url: formatUrl(seo),
-       title: category.name,
+       title: capitalizeWords(category.name),
        l2: getL2Data(l2, trends, id)
       };
   });
