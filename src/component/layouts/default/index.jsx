@@ -39,7 +39,24 @@ class NavDefaultLayout extends Component {
       <NavItem title={item.title} key={item.id} url={item.url} />
     ));
 
-    const splitNav = chunk(nav, 7);
+    let chunkSize = 7;
+    switch (nav.length) {
+      case 5:
+      case 6:
+      case 7:
+        chunkSize = 7;
+        break;
+      case 8:
+        chunkSize = 5;
+        break;
+      case 9:
+        chunkSize = 6;
+        break;
+      default:
+        break;
+    }
+
+    const splitNav = chunk(nav, chunkSize);
 
     return (
       <ul className="contentNav__list">
