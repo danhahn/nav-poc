@@ -1,9 +1,9 @@
 .hasFilterWrapper {
   max-height: 0;
   overflow: hidden;
-  transition: all 400ms;
+  transition: max-height 400ms;
   .Filters {
-    transition: all 300ms;
+    transition: opacity 300ms;
     opacity: 0;
   }
 }
@@ -22,9 +22,16 @@
   }
 }
 
+.hasFilterClosing {
+  transition: max-height 200ms;
+  .Filters {
+    transition: opacity 100ms;
+    opacity: 0;
+  }
+}
+
 .Filters {
   max-width: 1440px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;

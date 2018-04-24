@@ -11,6 +11,7 @@ class LevelTwoItems extends Component {
       isActive: false,
       hasFilterOpening: false,
       hasFilterOpen: false,
+      hasFilterClosing: false,
       localHasFilters: null,
       l3Offset: 0
     };
@@ -40,7 +41,7 @@ class LevelTwoItems extends Component {
     clearTimeout(this.timeout);
     clearTimeout(this.hasFilterTimeout);
   }
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     const { hasFilter } = this.props;
 
     if (!!this.props.secondaryActive === false && this.state.isActive) {
@@ -48,13 +49,16 @@ class LevelTwoItems extends Component {
     }
     if (prevProps.hasFilter !== this.props.hasFilter) {
       !hasFilter ? this.hideFilters() : this.showFilters();
+      if (!hasFilter) {
+        this.setState({ l3Offset: prevState.l3Offset });
+      }
     }
   }
   showFilters() {
     this.setState({ hasFilterOpening: true, localHasFilters: true });
   }
   hideFilters() {
-    this.setState({ hasFilterOpen: false, localHasFilters: false });
+    this.setState({ localHasFilters: false, hasFilterClosing: true });
   }
   handleTransitionEnd(event) {
     const { localHasFilters } = this.state;
@@ -63,13 +67,22 @@ class LevelTwoItems extends Component {
         this.setState({ hasFilterOpening: false, hasFilterOpen: true });
       }
     }
+    if (event.propertyName.includes("opacity")) {
+      if (!localHasFilters) {
+        this.setState({ hasFilterOpen: false, hasFilterClosing: false });
+      }
+    }
   }
   updateL3Offset(l3Offset) {
-    console.log(l3Offset);
     this.setState({ l3Offset });
   }
   render() {
-    const { hasFilterOpening, hasFilterOpen, l3Offset } = this.state;
+    const {
+      hasFilterOpening,
+      hasFilterOpen,
+      l3Offset,
+      hasFilterClosing
+    } = this.state;
     const {
       levelTwoIsOpening,
       levelTwoIsOpen,
@@ -88,7 +101,8 @@ class LevelTwoItems extends Component {
     });
     const filterClasses = classNames("hasFilterWrapper", {
       hasFilterOpening,
-      hasFilterOpen
+      hasFilterOpen,
+      hasFilterClosing
     });
     return (
       <nav
