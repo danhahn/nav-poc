@@ -5,10 +5,14 @@
   left: 0;
   right: 0;
   background-color: #f7f6f2;
-  transform: translateY(-100%);
-  transition: transform 300ms 500ms;
+  transition: all 300ms;
   z-index: 900;
-
+  transform: translateY(-100%);
+  opacity: 0;
+  &.localActive {
+    transform: translateY(0);
+    opacity: 1;
+  }
   &.isOpening {
     transform: translateY(0);
   }

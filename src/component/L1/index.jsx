@@ -2,18 +2,18 @@ import React from "react";
 import classNames from "classnames";
 import "./styles.css";
 
-const LevelZeroItems = ({ items, mouseEnter, mouseExit, isActive }) => {
+const LevelZeroItems = ({ navItems, mouseEnter, mouseExit, isActive }) => {
   return (
-    <nav className="PrimaryNav" ref={el => (this.primaryNav = el)}>
-      <ul className="PrimaryNav__list">
-        {items.map(primary => {
-          const primaryNavStyle = classNames("PrimaryNav__link", {
+    <nav className="l1" ref={el => (this.primaryNav = el)}>
+      <ul className="l1__list">
+        {navItems.map(primary => {
+          const primaryNavStyle = classNames("l1__link", {
             active: primary.id === isActive
           });
 
           return (
             <li
-              className="PrimaryNav__item"
+              className="l1__item"
               key={primary.id}
               onMouseEnter={() =>
                 mouseEnter(primary.id, primary.l2, this.primaryNav)

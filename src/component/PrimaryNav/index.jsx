@@ -19,12 +19,12 @@ export default class PrimaryNav extends Component {
       secondaryActive: null,
       primaryNavOffSetHeight: null
     };
-    this.handlePrimaryMouseEnter = this.handlePrimaryMouseEnter.bind(this);
-    this.handlePrimaryMouseExit = this.handlePrimaryMouseExit.bind(this);
-    this.handleSecondaryMouseEnter = this.handleSecondaryMouseEnter.bind(this);
-    this.handleSecondaryMouseExit = this.handleSecondaryMouseExit.bind(this);
-    this.handleThirdMouseEnter = this.handleThirdMouseEnter.bind(this);
-    this.handleThirdMouseExit = this.handleThirdMouseExit.bind(this);
+    this.handleL1MouseEnter = this.handleL1MouseEnter.bind(this);
+    this.handleL1MouseExit = this.handleL1MouseExit.bind(this);
+    this.handleL2MouseEnter = this.handleL2MouseEnter.bind(this);
+    this.handleL2MouseExit = this.handleL2MouseExit.bind(this);
+    this.handleL3Enter = this.handleL3Enter.bind(this);
+    this.handleL3MouseExit = this.handleL3MouseExit.bind(this);
     this.resetNavData = this.resetNavData.bind(this);
     this.constructTimeoutEnter = this.constructTimeoutEnter.bind(this);
     this.constructTimeoutExit = this.constructTimeoutExit.bind(this);
@@ -33,10 +33,8 @@ export default class PrimaryNav extends Component {
 
   resetNavData() {
     this.setState({
-      levelOneActive: null,
-      secondaryActive: null,
-      levelOneIsOpen: false,
-      levelOneIsOpening: false,
+      l1Active: null,
+      l2Active: null,
       levelTwoIsOpen: false,
       levelTwoIsOpening: false,
       primaryNavOffSetHeight: null
@@ -57,32 +55,26 @@ export default class PrimaryNav extends Component {
     }, this.props.exitDelay);
   }
 
-  handlePrimaryMouseEnter(id, items, el) {
+  handleL1MouseEnter(id, items, el) {
     const { y: primaryNavOffSetHeight } = el.getBoundingClientRect();
     clearTimeout(this.timeout);
     const { updateLevelOneData, resetLevelTwoData, levelTwoItems } = this.props;
     this.setState({
-      levelOneIsOpening: true,
-      levelOneActive: id,
+      l1Active: id,
       primaryNavOffSetHeight
     });
-    this.constructTimeoutEnter({
-      levelOneIsOpening: false,
-      levelOneIsOpen: true
-    });
     if (levelTwoItems) {
-      this.setState({ levelTwoIsOpen: false, secondaryActive: null });
+      this.setState({ levelTwoIsOpen: false, l2Active: null });
       setTimeout(resetLevelTwoData, 1000);
-      // resetLevelTwoData();
     }
     updateLevelOneData(items);
   }
 
-  handlePrimaryMouseExit() {
+  handleL1MouseExit() {
     this.constructTimeoutExit();
   }
 
-  handleSecondaryMouseEnter(id, items, template, hasFilter) {
+  handleL2MouseEnter(id, items, template, hasFilter) {
     clearTimeout(this.timeout);
     const {
       updateLevelTwoData,
@@ -92,7 +84,7 @@ export default class PrimaryNav extends Component {
     } = this.props;
     this.setState({
       levelTwoIsOpening: true,
-      secondaryActive: id
+      l2Active: id
     });
     this.constructTimeoutEnter({
       levelTwoIsOpening: false,
@@ -103,15 +95,15 @@ export default class PrimaryNav extends Component {
     updateLevel2HasFilter(hasFilter);
   }
 
-  handleSecondaryMouseExit() {
+  handleL2MouseExit() {
     this.constructTimeoutExit();
   }
 
-  handleThirdMouseEnter() {
+  handleL3Enter() {
     clearTimeout(this.timeout);
   }
 
-  handleThirdMouseExit() {
+  handleL3MouseExit() {
     this.constructTimeoutExit();
   }
 
@@ -127,12 +119,10 @@ export default class PrimaryNav extends Component {
       levelTwoFilter
     } = this.props;
     const {
-      levelOneIsOpening,
-      levelOneIsOpen,
       levelTwoIsOpening,
       levelTwoIsOpen,
-      levelOneActive,
-      secondaryActive,
+      l1Active,
+      l2Active,
       primaryNavOffSetHeight
     } = this.state;
     const timing = {
@@ -143,32 +133,32 @@ export default class PrimaryNav extends Component {
       <React.Fragment>
         <L1
           {...timing}
-          items={items}
-          mouseEnter={this.handlePrimaryMouseEnter}
-          mouseExit={this.handlePrimaryMouseExit}
-          isActive={levelOneActive}
+          navItems={items}
+          mouseEnter={this.handleL1MouseEnter}
+          mouseExit={this.handleL1MouseExit}
+          isActive={l1Active}
         />
-        <L2
-          {...timing}
-          isOpening={levelOneIsOpening}
-          isOpen={levelOneIsOpen}
-          mouseEnter={this.handleSecondaryMouseEnter}
-          mouseExit={this.handleSecondaryMouseExit}
-          levelOneItems={levelOneItems}
-          isActive={secondaryActive}
-        />
+        {levelOneItems.length ? (
+          <L2
+            {...timing}
+            mouseEnter={this.handleL2MouseEnter}
+            mouseExit={this.handleL2MouseExit}
+            navItems={levelOneItems}
+            isActive={l2Active}
+          />
+        ) : null}
         {levelTwoItems.length ? (
           <L3
             {...timing}
             isOpening={levelTwoIsOpening}
             isOpen={levelTwoIsOpen}
             levelTwoItems={levelTwoItems}
-            secondaryActive={secondaryActive}
+            secondaryActive={l2Active}
             levelTwoTemplate={levelTwoTemplate}
             media={levelTwoMedia}
             hasFilter={levelTwoFilter}
-            mouseEnter={this.handleThirdMouseEnter}
-            mouseExit={this.handleThirdMouseExit}
+            mouseEnter={this.handleL3Enter}
+            mouseExit={this.handleL3MouseExit}
           />
         ) : null}
         {primaryNavOffSetHeight ? (
