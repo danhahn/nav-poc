@@ -62,7 +62,7 @@ class NavDefaultLayout extends Component {
       <ul className="contentNav__list">
         {splitNav.length === 1 ? (
           <React.Fragment>
-            <li className="contentNav__item isEmpty" />
+            {media.length ? <li className="contentNav__item isEmpty" /> : null}
             <li className="contentNav__item">
               <ul className="NavDefaultLayout" ref={el => (this.l3Offset = el)}>
                 {splitNav[0]}

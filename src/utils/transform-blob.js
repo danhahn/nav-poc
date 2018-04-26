@@ -33,6 +33,24 @@ const transformTrends = (trends, id) => {
   }
 }
 
+const getRamdomMedia = () => {
+  const colors = ["bada55", "00ffff", "663399", "339966", "669933"];
+  const numberOfMedia = Math.round(Math.random() * 2);
+  let media = [];
+  for(let i = 0; i < numberOfMedia; i ++) {
+    const color = Math.round(Math.random() * colors.length);
+    media = [
+      ...media,
+      {
+        src: `http://via.placeholder.com/330x266/${colors[color]}`,
+        href: "http://www.michaelkors.com",
+        title: `$slot ${Math.random()}`
+      }
+    ];
+  }
+  return media;
+}
+
 const transformL2Data = ({ id, name: title, seo, template, childCategories: l3s, hasFilter}) => {
   const transformedL3s = l3s.map(l3 => transformL3Data(l3));
   return {
@@ -42,16 +60,7 @@ const transformL2Data = ({ id, name: title, seo, template, childCategories: l3s,
     template: null,
     l3: transformedL3s,
     hasFilter,
-    media: [{
-      src: "http://via.placeholder.com/330x266/00ffff",
-      href: "http://www.michaelkors.com",
-      title: `${id}-slot 1`
-    },
-    {
-      src: "http://via.placeholder.com/330x266/bada55",
-      href: "http://www.michaelkors.com",
-      title: `${id}-slot 2`
-    }]
+    media: getRamdomMedia()
   };
 };
 

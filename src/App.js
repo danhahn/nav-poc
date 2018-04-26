@@ -18,7 +18,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
-        <PrimaryNav exitDelay={1000} />
+        <PrimaryNav exitDelay={10000000} />
         <article className="App-intro">
           <img src="/HP_PROMO_1.jpg" alt="" style={{maxWidth: `100%`}} />
           <p>
