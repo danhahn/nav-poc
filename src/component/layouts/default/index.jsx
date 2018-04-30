@@ -29,8 +29,8 @@ class NavDefaultLayout extends Component {
 
   updateL3() {
     const { updateL3Offset } = this.props;
-    const { x } = this.l3Offset.getBoundingClientRect();
-    updateL3Offset(x);
+    // const { x } = this.l3Offset.getBoundingClientRect();
+    updateL3Offset(0);
   }
 
   render() {
@@ -87,11 +87,13 @@ class NavDefaultLayout extends Component {
             );
           })
         )}
-        {media.map(({ src, href, title }) => (
-          <li className="contentNav__item" key={title}>
-            <LinkWithImage src={src} href={href} title={title} />
-          </li>
-        ))}
+        {media
+          ? media.map(({ src, href, title }) => (
+              <li className="contentNav__item" key={title}>
+                <LinkWithImage src={src} href={href} title={title} />
+              </li>
+            ))
+          : null}
       </ul>
     );
   }

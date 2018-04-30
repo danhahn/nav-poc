@@ -1,6 +1,6 @@
 .contentNav {
   position: absolute;
-  background: rgba(white, 0.9);
+  background: orangered;
   left: 0;
   right: 0;
   transform: translateY(-15%);
@@ -8,13 +8,17 @@
   margin-top: 47px;
   opacity: 0;
   z-index: 800;
-  &.isOpen {
-    background-color: rgba(white, 0.9);
+  // &.isOpen {
+  //   background-color: rgba(white, 0.9);
+  // }
+  // &.isOpen,
+  &.localActive {
+    background-color: sandybrown;
   }
-  &.isOpen,
   &.isActive {
-    transform: translateY(0);
+    background-color: yellowgreen;
     opacity: 1;
+    transform: translateY(0);
   }
   &__list {
     padding: 2em 0;

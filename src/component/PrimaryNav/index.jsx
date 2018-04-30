@@ -6,164 +6,127 @@ import Overlay from "../Overlay";
 import "./styles.css";
 
 export default class PrimaryNav extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      levelOneIsOpening: false,
-      levelOneIsOpen: false,
-      levelTwoIsOpening: false,
-      levelTwoIsOpen: false,
-      levelOneIsCloseing: false,
-      levelOneIsClosed: false,
-      levelOneActive: null,
-      secondaryActive: null,
-      primaryNavOffSetHeight: null
+      l1: [],
+      l2: [],
+      l3: [],
+      l1Id: null,
+      l2Id: null,
+      l3Template: null,
+      l3Meida: [],
+      l2IsActive: false,
+      l3IsActive: false
     };
     this.handleL1MouseEnter = this.handleL1MouseEnter.bind(this);
-    this.handleL1MouseExit = this.handleL1MouseExit.bind(this);
     this.handleL2MouseEnter = this.handleL2MouseEnter.bind(this);
-    this.handleL2MouseExit = this.handleL2MouseExit.bind(this);
-    this.handleL3Enter = this.handleL3Enter.bind(this);
-    this.handleL3MouseExit = this.handleL3MouseExit.bind(this);
-    this.resetNavData = this.resetNavData.bind(this);
-    this.constructTimeoutEnter = this.constructTimeoutEnter.bind(this);
-    this.constructTimeoutExit = this.constructTimeoutExit.bind(this);
-    this.timeout = null;
+    this.handleL3MouseEnter = this.handleL3MouseEnter.bind(this);
+    this.clearNavState = this.clearNavState.bind(this);
+    this.clearStateTimeout = null;
   }
 
-  resetNavData() {
-    this.setState({
-      l1Active: null,
-      l2Active: null,
-      levelTwoIsOpen: false,
-      levelTwoIsOpening: false,
-      primaryNavOffSetHeight: null
+  componentDidMount() {
+    this.l3Wrapper.addEventListener("transitionend", event => {
+      const { l3IsActive } = this.state;
+      if (event.propertyName.includes("transform")) {
+        if (!l3IsActive) {
+          this.setState({ l3: [] });
+        }
+      }
     });
   }
 
-  constructTimeoutEnter(newState) {
-    setTimeout(() => {
-      this.setState(newState);
-    }, this.props.enterDelay);
-  }
-
-  constructTimeoutExit() {
-    const { updateLevelOneReset } = this.props;
-    this.timeout = setTimeout(() => {
-      updateLevelOneReset();
-      this.resetNavData();
-    }, this.props.exitDelay);
-  }
-
-  handleL1MouseEnter(id, items, el) {
-    const { y: primaryNavOffSetHeight } = el.getBoundingClientRect();
-    clearTimeout(this.timeout);
-    const { updateLevelOneData, resetLevelTwoData, levelTwoItems } = this.props;
-    this.setState({
-      l1Active: id,
-      primaryNavOffSetHeight
-    });
-    if (levelTwoItems) {
-      this.setState({ levelTwoIsOpen: false, l2Active: null });
-      setTimeout(resetLevelTwoData, 1000);
+  componentDidUpdate(prevProps, prevStates) {
+    if (this.state.l1Id !== prevStates.l1Id) {
+      // console.log("setting l3IsActive to false");
+      this.setState({ l3IsActive: false });
     }
-    updateLevelOneData(items);
+    console.log(this.state.l2Id, prevStates.l2Id);
+    if (
+      this.state.l1Id === prevStates.l1Id &&
+      prevStates.l2Id &&
+      !this.state.l2Id
+    ) {
+      if (this.state.l3IsActive) {
+        this.setState({ l3IsActive: false });
+      }
+    }
   }
 
-  handleL1MouseExit() {
-    this.constructTimeoutExit();
+  handleL1MouseEnter(l1Id, l2, el) {
+    clearTimeout(this.clearStateTimeout);
+    this.setState({ l2, l1Id, l2Id: null });
   }
 
-  handleL2MouseEnter(id, items, template, hasFilter) {
-    clearTimeout(this.timeout);
-    const {
-      updateLevelTwoData,
-      updateLevelTwoMedia,
-      updateLevel2HasFilter,
-      levelOneItems
-    } = this.props;
-    this.setState({
-      levelTwoIsOpening: true,
-      l2Active: id
-    });
-    this.constructTimeoutEnter({
-      levelTwoIsOpening: false,
-      levelTwoIsOpen: true
-    });
-    updateLevelTwoData(items, template);
-    updateLevelTwoMedia(id, levelOneItems);
-    updateLevel2HasFilter(hasFilter);
+  handleL2MouseEnter(l2Id, l3, l3Template, hasFilter) {
+    clearTimeout(this.clearStateTimeout);
+    this.setState({ l3, l2Id, l3Template, l3IsActive: true });
   }
 
-  handleL2MouseExit() {
-    this.constructTimeoutExit();
+  handleL3MouseEnter(l2Id, l3, l3Template, hasFilter) {
+    clearTimeout(this.clearStateTimeout);
   }
 
-  handleL3Enter() {
-    clearTimeout(this.timeout);
-  }
-
-  handleL3MouseExit() {
-    this.constructTimeoutExit();
+  clearNavState(level) {
+    this.clearStateTimeout = setTimeout(() => {
+      console.log("clearNavState");
+      this.setState({
+        l1: [],
+        l2: [],
+        l3: [],
+        l1Id: null,
+        l2Id: null,
+        l3Template: null,
+        l3Meida: [],
+        l2IsActive: false,
+        l3IsActive: false
+      });
+    }, 1000);
   }
 
   render() {
+    const { l1 } = this.props;
     const {
-      items,
-      levelOneItems,
-      levelTwoItems,
-      levelTwoTemplate,
-      enterDelay,
-      exitDelay,
-      levelTwoMedia,
-      levelTwoFilter
-    } = this.props;
-    const {
-      levelTwoIsOpening,
-      levelTwoIsOpen,
-      l1Active,
-      l2Active,
-      primaryNavOffSetHeight
+      l2,
+      l3,
+      l1Id,
+      l2Id,
+      l3Template,
+      l2IsActive,
+      l3IsActive
     } = this.state;
-    const timing = {
-      enterDelay,
-      exitDelay
-    };
     return (
       <React.Fragment>
+        <div style={{ textAlign: "center" }}>
+          id1 ={l1Id} id2= {l2Id} l3IsActive = {l3IsActive ? "✅" : "🚫"}
+        </div>
         <L1
-          {...timing}
-          navItems={items}
+          navItems={l1}
+          activeId={l1Id}
           mouseEnter={this.handleL1MouseEnter}
-          mouseExit={this.handleL1MouseExit}
-          isActive={l1Active}
+          mouseExit={() => this.clearNavState("l1")}
         />
-        {levelOneItems.length ? (
+        {l2.length ? (
           <L2
-            {...timing}
+            navItems={l2}
+            activeId={l2Id}
             mouseEnter={this.handleL2MouseEnter}
-            mouseExit={this.handleL2MouseExit}
-            navItems={levelOneItems}
-            isActive={l2Active}
+            mouseExit={() => this.clearNavState("l2")}
+            isActive={l2IsActive}
           />
         ) : null}
-        {levelTwoItems.length ? (
-          <L3
-            {...timing}
-            isOpening={levelTwoIsOpening}
-            isOpen={levelTwoIsOpen}
-            levelTwoItems={levelTwoItems}
-            secondaryActive={l2Active}
-            levelTwoTemplate={levelTwoTemplate}
-            media={levelTwoMedia}
-            hasFilter={levelTwoFilter}
-            mouseEnter={this.handleL3Enter}
-            mouseExit={this.handleL3MouseExit}
-          />
-        ) : null}
-        {primaryNavOffSetHeight ? (
-          <Overlay top={primaryNavOffSetHeight} />
-        ) : null}
+        <div className="L3Wrapper" ref={el => (this.l3Wrapper = el)}>
+          {l3.length ? (
+            <L3
+              navItems={l3}
+              mouseEnter={this.handleL3MouseEnter}
+              mouseExit={() => this.clearNavState("l3")}
+              template={l3Template}
+              isActive={l3IsActive}
+            />
+          ) : null}
+        </div>
       </React.Fragment>
     );
   }

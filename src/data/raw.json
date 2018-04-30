@@ -1,58 +1,6 @@
 [
   {
     "category": {
-      "childCategories": [],
-      "id": "cat3490003",
-      "template": null,
-      "trendCategories": [
-        {
-          "childCategories": [],
-          "id": "cat3490009",
-          "template": null,
-          "trendCategories": [],
-          "loyaltyTiers": null,
-          "priceFilterType": "default",
-          "name": "Must haves",
-          "seo": {
-            "defaultTitle": null,
-            "overridenCategoryURL": null,
-            "externalURL_fr": null,
-            "externalURL": null,
-            "defaultKeywords": null,
-            "name": "must-haves",
-            "defaultDisplayname": null,
-            "contentKey": "Michael mus have",
-            "defaultdescription": null,
-            "url": null,
-            "internalURL": "/women/clothing/sweaters/_/N-28ek",
-            "canonicalURL": null
-          },
-          "dimensionId": null
-        }
-      ],
-      "loyaltyTiers": null,
-      "priceFilterType": "default",
-      "name": "DK",
-      "seo": {
-        "defaultTitle": null,
-        "overridenCategoryURL": null,
-        "externalURL_fr": null,
-        "externalURL":
-          "https://www.anntaylor.com/sale-blouses-and-tops/cata000045?goToPage=4&N=0",
-        "defaultKeywords": null,
-        "name": "dk",
-        "defaultDisplayname": null,
-        "contentKey": "destination kors",
-        "defaultdescription": null,
-        "url": null,
-        "internalURL": null,
-        "canonicalURL": null
-      },
-      "dimensionId": null
-    }
-  },
-  {
-    "category": {
       "childCategories": [
         {
           "childCategories": [

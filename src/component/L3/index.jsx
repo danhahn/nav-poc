@@ -4,11 +4,11 @@ import Filters from "../Filters";
 import classNames from "classnames";
 import "./styles.css";
 
-class LevelTwoItems extends Component {
+class L3 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isActive: false,
+      localActive: false,
       hasFilterOpening: false,
       hasFilterOpen: false,
       hasFilterClosing: false,
@@ -25,17 +25,17 @@ class LevelTwoItems extends Component {
   componentDidMount() {
     const { hasFilter } = this.props;
     this.timeout = setTimeout(() => {
-      this.setState({ isActive: true });
+      this.setState({ localActive: true });
     }, 100);
-    if (hasFilter) {
-      this.hasFilterTimeout = setTimeout(() => {
-        this.setState({ hasFilterOpening: true, localHasFilters: true });
-      }, this.props.enterDelay * 1.5);
-    }
-    this.filterWrapper.addEventListener(
-      "transitionend",
-      this.handleTransitionEnd
-    );
+    // if (hasFilter) {
+    //   this.hasFilterTimeout = setTimeout(() => {
+    //     this.setState({ hasFilterOpening: true, localHasFilters: true });
+    //   }, this.props.enterDelay * 1.5);
+    // }
+    // this.filterWrapper.addEventListener(
+    //   "transitionend",
+    //   this.handleTransitionEnd
+    // );
   }
   componentWillUnmount() {
     clearTimeout(this.timeout);
@@ -44,9 +44,9 @@ class LevelTwoItems extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { hasFilter } = this.props;
 
-    if (!!this.props.secondaryActive === false && this.state.isActive) {
-      this.setState({ isActive: false });
-    }
+    // if (!!this.props.secondaryActive === false && this.state.localActive) {
+    //   this.setState({ localActive: false });
+    // }
     if (prevProps.hasFilter !== this.props.hasFilter) {
       !hasFilter ? this.hideFilters() : this.showFilters();
       if (!hasFilter) {
@@ -86,18 +86,20 @@ class LevelTwoItems extends Component {
     const {
       isOpening,
       isOpen,
-      levelTwoItems,
-      levelTwoTemplate,
+      navItems,
+      template,
       mouseEnter,
       mouseExit,
       enterDelay,
-      media
+      media,
+      isActive
     } = this.props;
-    const { isActive } = this.state;
+    const { localActive } = this.state;
     const levelTwoStyles = classNames("contentNav", {
       isOpening,
       isOpen,
-      isActive
+      localActive,
+      isActive: isActive && localActive
     });
     const filterClasses = classNames("hasFilterWrapper", {
       hasFilterOpening,
@@ -112,8 +114,8 @@ class LevelTwoItems extends Component {
         style={{ transitionDelay: `${enterDelay / 2}ms` }}
       >
         <ChooseLayout
-          levelTwoItems={levelTwoItems}
-          template={levelTwoTemplate}
+          levelTwoItems={navItems}
+          template={template}
           media={media}
           updateL3Offset={this.updateL3Offset}
         />
@@ -129,4 +131,12 @@ class LevelTwoItems extends Component {
   }
 }
 
-export default LevelTwoItems;
+L3.defaultProps = {
+  navItems: [],
+  mouseEnter: () => null,
+  media: [],
+  updateL3Offset: 0,
+  template: null
+};
+
+export default L3;

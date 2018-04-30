@@ -13,7 +13,7 @@ import {
 } from "../../store/actions";
 
 const mapStateToProps = state => ({
-  items: state.navigation.transformedNavData,
+  l1: state.navigation.transformedNavData,
   levelOneItems: state.navigation.levelOneData,
   levelTwoItems: state.navigation.levelTwoData,
   levelTwoTemplate: state.navigation.levelTwoTemplate,
@@ -35,7 +35,7 @@ const mapDispatchToProps = dispatch => ({
   },
   resetLevelTwoData: () => {
     dispatch(resetLevelTwoItems());
-    dispatch(resetLevelTwoTemplate());
+    // dispatch(resetLevelTwoTemplate());
   },
   updateLevelTwoMedia: (id, levelOneItems) => {
     const [selectedItem] = levelOneItems.filter(item => item.id === id);

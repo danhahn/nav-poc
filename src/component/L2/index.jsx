@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import classNames from "classnames";
 import "./styles.css";
 
-export default class LevelOneItems extends Component {
+class L2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +32,7 @@ export default class LevelOneItems extends Component {
       navItems,
       mouseEnter,
       mouseExit,
-      isActive,
+      activeId,
       enterDelay
     } = this.props;
     const { isOpen } = this.state;
@@ -52,7 +52,7 @@ export default class LevelOneItems extends Component {
           {navItems
             ? navItems.map(secondary => {
                 const linkStyles = classNames("L2__link", {
-                  active: secondary.id === isActive
+                  active: secondary.id === activeId
                 });
                 return (
                   <li
@@ -80,3 +80,10 @@ export default class LevelOneItems extends Component {
     );
   }
 }
+
+L2.defaultProps = {
+  mouseEnter: () => null,
+  navItems: []
+};
+
+export default L2;

@@ -2,13 +2,13 @@ import React from "react";
 import classNames from "classnames";
 import "./styles.css";
 
-const LevelZeroItems = ({ navItems, mouseEnter, mouseExit, isActive }) => {
+const L1 = ({ navItems, mouseEnter, mouseExit, activeId }) => {
   return (
     <nav className="l1" ref={el => (this.primaryNav = el)}>
       <ul className="l1__list">
         {navItems.map(primary => {
           const primaryNavStyle = classNames("l1__link", {
-            active: primary.id === isActive
+            active: primary.id === activeId
           });
 
           return (
@@ -31,4 +31,10 @@ const LevelZeroItems = ({ navItems, mouseEnter, mouseExit, isActive }) => {
   );
 };
 
-export default LevelZeroItems;
+L1.defaultProps = {
+  navItems: [],
+  mouseEnter: () => null,
+  activeId: "cat20005"
+};
+
+export default L1;
