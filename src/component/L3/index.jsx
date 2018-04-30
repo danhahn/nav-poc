@@ -27,15 +27,15 @@ class L3 extends Component {
     this.timeout = setTimeout(() => {
       this.setState({ localActive: true });
     }, 100);
-    // if (hasFilter) {
-    //   this.hasFilterTimeout = setTimeout(() => {
-    //     this.setState({ hasFilterOpening: true, localHasFilters: true });
-    //   }, this.props.enterDelay * 1.5);
-    // }
-    // this.filterWrapper.addEventListener(
-    //   "transitionend",
-    //   this.handleTransitionEnd
-    // );
+    if (hasFilter) {
+      this.hasFilterTimeout = setTimeout(() => {
+        this.setState({ hasFilterOpening: true, localHasFilters: true });
+      }, this.props.enterDelay * 1.5);
+    }
+    this.filterWrapper.addEventListener(
+      "transitionend",
+      this.handleTransitionEnd
+    );
   }
   componentWillUnmount() {
     clearTimeout(this.timeout);
@@ -111,7 +111,7 @@ class L3 extends Component {
         className={levelTwoStyles}
         onMouseEnter={mouseEnter}
         onMouseLeave={mouseExit}
-        style={{ transitionDelay: `${enterDelay / 2}ms` }}
+        style={{ transitionDelay: `${enterDelay}ms` }}
       >
         <ChooseLayout
           levelTwoItems={navItems}

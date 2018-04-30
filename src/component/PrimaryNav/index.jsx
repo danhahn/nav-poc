@@ -17,7 +17,8 @@ export default class PrimaryNav extends Component {
       l3Template: null,
       l3Meida: [],
       l2IsActive: false,
-      l3IsActive: false
+      l3IsActive: false,
+      overlayOffset: 0
     };
     this.handleL1MouseEnter = this.handleL1MouseEnter.bind(this);
     this.handleL2MouseEnter = this.handleL2MouseEnter.bind(this);
@@ -39,10 +40,8 @@ export default class PrimaryNav extends Component {
 
   componentDidUpdate(prevProps, prevStates) {
     if (this.state.l1Id !== prevStates.l1Id) {
-      // console.log("setting l3IsActive to false");
       this.setState({ l3IsActive: false });
     }
-    console.log(this.state.l2Id, prevStates.l2Id);
     if (
       this.state.l1Id === prevStates.l1Id &&
       prevStates.l2Id &&
@@ -56,12 +55,20 @@ export default class PrimaryNav extends Component {
 
   handleL1MouseEnter(l1Id, l2, el) {
     clearTimeout(this.clearStateTimeout);
-    this.setState({ l2, l1Id, l2Id: null });
+    const { y: overlayOffset } = el.getBoundingClientRect();
+    this.setState({ l2, l1Id, l2Id: null, overlayOffset });
   }
 
   handleL2MouseEnter(l2Id, l3, l3Template, hasFilter) {
     clearTimeout(this.clearStateTimeout);
-    this.setState({ l3, l2Id, l3Template, l3IsActive: true });
+    const [l3MeidaData] = this.state.l2.filter(l2 => l2.id === l2Id);
+    this.setState({
+      l3,
+      l2Id,
+      l3Template,
+      l3IsActive: true,
+      l3Meida: l3MeidaData.media
+    });
   }
 
   handleL3MouseEnter(l2Id, l3, l3Template, hasFilter) {
@@ -94,13 +101,15 @@ export default class PrimaryNav extends Component {
       l2Id,
       l3Template,
       l2IsActive,
-      l3IsActive
+      l3IsActive,
+      l3Meida,
+      overlayOffset
     } = this.state;
     return (
       <React.Fragment>
-        <div style={{ textAlign: "center" }}>
+        {/* <div style={{ textAlign: "center" }}>
           id1 ={l1Id} id2= {l2Id} l3IsActive = {l3IsActive ? "✅" : "🚫"}
-        </div>
+        </div> */}
         <L1
           navItems={l1}
           activeId={l1Id}
@@ -109,24 +118,26 @@ export default class PrimaryNav extends Component {
         />
         {l2.length ? (
           <L2
+            isActive={l2IsActive}
             navItems={l2}
             activeId={l2Id}
             mouseEnter={this.handleL2MouseEnter}
             mouseExit={() => this.clearNavState("l2")}
-            isActive={l2IsActive}
           />
         ) : null}
         <div className="L3Wrapper" ref={el => (this.l3Wrapper = el)}>
           {l3.length ? (
             <L3
+              isActive={l3IsActive}
               navItems={l3}
+              media={l3Meida}
               mouseEnter={this.handleL3MouseEnter}
               mouseExit={() => this.clearNavState("l3")}
               template={l3Template}
-              isActive={l3IsActive}
             />
           ) : null}
         </div>
+        {l2.length ? <Overlay top={overlayOffset} /> : null}
       </React.Fragment>
     );
   }

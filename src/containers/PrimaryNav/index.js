@@ -6,7 +6,7 @@ import {
   updateLevelTwoItems,
   updateLevelTwoTemplate,
   resetLevelTwoItems,
-  resetLevelTwoTemplate,
+  // resetLevelTwoTemplate,
   resetNav,
   setLevelTwoMedia,
   setLevelHasFilter

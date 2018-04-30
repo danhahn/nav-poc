@@ -44,7 +44,7 @@ const getRamdomMedia = () => {
       {
         src: `http://via.placeholder.com/330x266/${colors[color]}`,
         href: "http://www.michaelkors.com",
-        title: `$slot ${Math.random()}`
+        title: `slot ${Math.round(Math.random() * 10000)}`
       }
     ];
   }

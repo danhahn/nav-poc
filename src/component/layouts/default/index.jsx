@@ -41,15 +41,23 @@ class NavDefaultLayout extends Component {
 
     let chunkSize = 7;
     switch (nav.length) {
+      case 3:
+      case 4:
       case 5:
       case 6:
       case 7:
+      case 10:
+      case 11:
+      case 12:
+      case 13:
+      case 14:
         chunkSize = 7;
         break;
       case 8:
         chunkSize = 5;
         break;
       case 9:
+      case 15:
         chunkSize = 6;
         break;
       default:
