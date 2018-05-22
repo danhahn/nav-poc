@@ -30,7 +30,7 @@ class L3 extends Component {
     if (hasFilter) {
       this.hasFilterTimeout = setTimeout(() => {
         this.setState({ hasFilterOpening: true, localHasFilters: true });
-      }, this.props.enterDelay * 1.5);
+      }, this.props.enterDelay * 2);
     }
     this.filterWrapper.addEventListener(
       "transitionend",
@@ -111,7 +111,7 @@ class L3 extends Component {
         className={levelTwoStyles}
         onMouseEnter={mouseEnter}
         onMouseLeave={mouseExit}
-        style={{ transitionDelay: `${enterDelay}ms` }}
+        style={{ transitionDelay: `${enterDelay * 0.5}ms` }}
       >
         <ChooseLayout
           levelTwoItems={navItems}

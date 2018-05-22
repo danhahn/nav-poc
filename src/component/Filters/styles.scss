@@ -3,7 +3,7 @@
   overflow: hidden;
   transition: max-height 400ms;
   .Filters {
-    transition: opacity 300ms;
+    transition: opacity 1300ms;
     opacity: 0;
   }
 }
@@ -25,7 +25,7 @@
 .hasFilterClosing {
   transition: max-height 200ms;
   .Filters {
-    transition: opacity 100ms;
+    transition: opacity 300ms;
     opacity: 0;
   }
 }
